@@ -49,16 +49,6 @@
       "value": "",
       "required": true
     },
-    "CHROME_BIN": {
-      "description": "for carbon.py leave it as it is. ",
-      "value": "/app/.apt/usr/bin/google-chrome",
-      "required": false
-    },
-    "CHROME_DRIVER": {
-      "description": "for carbon.py leave it as it is. ",
-      "value": "/app/.chromedriver/bin/chromedriver",
-      "required": false
-    },
     "TG_BOT_USER_NAME_BF_HER": {
       "description": "needed for inline buttons maker make a bot at http://telegram.dog/BotFather and get the username of your bot it's worth it",
       "value": "",

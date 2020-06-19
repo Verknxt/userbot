@@ -14,7 +14,7 @@ from userbot.utils import admin_cmd
 async def _(event):
     if event.fwd_from:
         return
-    animation_interval = 0.2
+    animation_interval = 0.3
     animation_ttl = range(0, 11)
     input_str = event.pattern_match.group(1)
     if input_str == "wtf":
