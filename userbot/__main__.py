@@ -39,7 +39,7 @@ if len(argv) not in (1, 3, 4):
 else:
     bot.tgbot = None
     if Var.TG_BOT_USER_NAME_BF_HER is not None:
-        print("Initiating Inline Bot")
+        print("initiating inline bot")
         # ForTheGreatrerGood of beautification
         bot.tgbot = TelegramClient(
             "TG_BOT_TOKEN",
@@ -57,7 +57,7 @@ else:
             if variable in heroku_var:
                 del heroku_var[variable]
             else:
-                print("all Good!")
+                print("all good!")
         print("startup completed")
     else:
         bot.start()
