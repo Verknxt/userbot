@@ -1,0 +1,87 @@
+{
+  "name": "userbot",
+  "description": "userbot by verknxt",
+  "logo": "https://i.postimg.cc/CKRjRwZ1/photo-2020-06-13-16-51-18.jpg",
+  "keywords": [
+    "telegram",
+    "userbot",
+    "plugin",
+    "modular",
+    "productivity"
+  ],
+  "repository": "https://github.com/Verknxt/X-tra-Telegram",
+  "website": "#TODO",
+  "success_url": "#TODO",
+  "env": {
+    "ENV": {
+      "description": "setting this to ANYTHING will enable heroku.",
+      "value": "ANYTHING"
+    },
+    "TEMP_DOWNLOAD_DIRECTORY": {
+      "description": "where the downloaded files will go.",
+      "value": "./userbot/downloads/",
+      "required": false
+    },
+    "APP_ID": {
+      "description": "get this value from my.telegram.org! please do not steal",
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "get this value from my.telegram.org! please do not steal",
+      "value": ""
+    },
+    "STRING_SESSION": {
+      "description": "get this value by running python3 telesetup.py locally",
+      "value": ""
+    },
+    "GITHUB_ACCESS_TOKEN": {
+      "description": "get this value from github.com/settings/tokens! please do not steal",
+      "value": "",
+      "required": false
+    },
+    "GIT_REPO_NAME": {
+      "description": "your repo name example: verknxt/userbot but GITHUB_ACCESS_TOKEN must be setup first.",
+      "value": "",
+      "required": false
+    },
+    "TG_BOT_TOKEN_BF_HER": {
+      "description": "needed for inline buttons maker make a bot at http://telegram.dog/BotFather and get the token of your bot it's worth it",
+      "value": "",
+      "required": true
+    },
+    "CHROME_BIN": {
+      "description": "for carbon.py leave it as it is. ",
+      "value": "/app/.apt/usr/bin/google-chrome",
+      "required": false
+    },
+    "CHROME_DRIVER": {
+      "description": "for carbon.py leave it as it is. ",
+      "value": "/app/.chromedriver/bin/chromedriver",
+      "required": false
+    },
+    "TG_BOT_USER_NAME_BF_HER": {
+      "description": "needed for inline buttons maker make a bot at http://telegram.dog/BotFather and get the username of your bot it's worth it",
+      "value": "",
+      "required": true
+    }
+  },
+  "addons": [{
+    "plan": "heroku-postgresql",
+    "options": {
+      "version": "9.5"
+    }
+  }],
+  "buildpacks": [{
+    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
+  },{
+    "url":"https://github.com/amivin/aria2-heroku.git"
+  },{
+    "url":"https://github.com/heroku/heroku-buildpack-google-chrome"
+  },{
+    "url":"https://github.com/heroku/heroku-buildpack-chromedriver"
+  },{
+    "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
+  },{
+    "url": "heroku/python"
+  }]
+}
