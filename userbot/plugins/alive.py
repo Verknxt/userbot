@@ -10,6 +10,6 @@ from userbot.utils import admin_cmd
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     await alive.edit("`"
-                     "`i'm alive!`\n\n"
-                     "`telethon version: 1.14.0\npython version: 3.7.3\n`"
+                     "i'm alive!\n\n"
+                     "telethon version: 1.14.0\npython version: 3.7.3\n"
                      "`")
