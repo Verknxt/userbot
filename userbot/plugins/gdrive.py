@@ -46,6 +46,7 @@ async def _(event):
         reply_message = await event.get_reply_message()
         try:
             c_time = time.time()
+            await mone.edit("downloading to local...")
             downloaded_file_name = await bot.download_media(
                 reply_message,
                 Var.TEMP_DOWNLOAD_DIRECTORY
