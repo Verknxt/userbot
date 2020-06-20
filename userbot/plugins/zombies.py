@@ -65,7 +65,7 @@ async def rm_deletedacc(show):
 
     con = show.pattern_match.group(1).lower()
     del_u = 0
-    del_status = "`no deleted accounts were found this group is clean`"
+    del_status = "no deleted accounts were found this group is clean"
 
     if con != "clean":
         await show.edit("`searching for deleted accounts...`")
@@ -75,7 +75,7 @@ async def rm_deletedacc(show):
                 del_u += 1
                 await sleep(1)
         if del_u > 0:
-            del_status = f"`{del_u} deleted account(s) were found in this group clean them by using .zombies clean`"
+            del_status = f"`{del_u}` deleted account(s) were found in this group clean them by using .zombies clean"
         await show.edit(del_status)
         return
 
@@ -86,10 +86,10 @@ async def rm_deletedacc(show):
 
     # Well
     if not admin and not creator:
-        await show.edit("`i am not an admin here!`")
+        await show.edit("i am not an admin here!")
         return
 
-    await show.edit("`deleting deleted accounts...`")
+    await show.edit("deleting deleted accounts...")
     del_u = 0
     del_a = 0
 
@@ -99,7 +99,7 @@ async def rm_deletedacc(show):
                 await show.client(
                     EditBannedRequest(show.chat_id, user.id, BANNED_RIGHTS))
             except ChatAdminRequiredError:
-                await show.edit("`i don't have ban rights in this group`")
+                await show.edit("i don't have ban rights in this group")
                 return
             except UserAdminInvalidError:
                 del_u -= 1
@@ -110,10 +110,10 @@ async def rm_deletedacc(show):
 
 
     if del_u > 0:
-        del_status = f"`cleaned {del_u} deleted account(s)`"
+        del_status = f"cleaned `{del_u}` deleted account(s)"
 
     if del_a > 0:
-        del_status = f"`cleaned {del_u} deleted account(s) {del_a} deleted admin account(s) are not removed`"
+        del_status = f"cleaned `{del_u}` deleted account(s) `{del_a}` deleted admin account(s) are not removed"
 
 
     await show.edit(del_status)

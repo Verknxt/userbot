@@ -19,17 +19,17 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     if input_str == "wtf":
         animation_chars = [
-            "`w`",
-            "`wh`",
-            "`wha`",
-            "`what`",
-            "`what t`",
-            "`what th`",
-            "`what the`",
-            "`what the f`",
-            "`what the fu`",
-            "`what the fuc`",
-            "`what the fuck`"
+            "w",
+            "wh",
+            "wha",
+            "what",
+            "what t",
+            "what th",
+            "what the",
+            "what the f",
+            "what the fu",
+            "what the fuc",
+            "what the fuck"
         ]
 
         for i in animation_ttl:

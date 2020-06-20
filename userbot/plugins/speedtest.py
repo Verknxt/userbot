@@ -26,10 +26,10 @@ async def speedtest(spd):
     test.results.share()
     result = test.results.dict()
 
-    await spd.edit("download: "
-                   f"{speed_convert(result['download'])} \n"
-                   "upload: "
-                   f"{speed_convert(result['upload'])} \n")
+    await spd.edit("download: `"
+                   f"{speed_convert(result['download'])} `\n"
+                   "upload: `"
+                   f"{speed_convert(result['upload'])} `\n")
 
 
 def speed_convert(size):
@@ -38,7 +38,7 @@ def speed_convert(size):
     """
     power = 2**10
     zero = 0
-    units = {0: '', 1: 'kb/s', 2: 'mb/s', 3: 'gb/s', 4: 'tb/s'}
+    units = {0: '``', 1: '`kb/s`', 2: '`mb/s`', 3: '`gb/s`', 4: '`tb/s`'}
     while size > power:
         size /= power
         zero += 1

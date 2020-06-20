@@ -10,7 +10,6 @@ import io
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("processing...")
     cmd = event.text.split(" ", maxsplit=1)[1]
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
@@ -42,7 +41,7 @@ async def _(event):
     else:
         evaluation = "Success"
 
-    final_output = "exec: {}\n\noutput: \n{}".format(cmd, evaluation)
+    final_output = "exec: `{}`\n\noutput: \n`{}`".format(cmd, evaluation)
 
     if len(final_output) > 4096:
         with io.BytesIO(str.encode(final_output)) as out_file:
@@ -52,7 +51,7 @@ async def _(event):
                 out_file,
                 force_document=True,
                 allow_cache=False,
-                caption=f"processed: {cmd}",
+                caption=f"processed: `{cmd}`",
                 reply_to=reply_to_id
             )
             await event.delete()

@@ -37,7 +37,7 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.is_reply:
-        await event.edit("`reply to a picture to add it to my personal sticker pack.`")
+        await event.edit("reply to a picture to add it to my personal sticker pack.")
         return
     reply_message = await event.get_reply_message()
     sticker_emoji = "🔥"
@@ -52,7 +52,7 @@ async def _(event):
     userid = event.from_id
     packname = f"{user.first_name}'s vol.{pack}"
     packshortname = f"vol_{pack}_with_{userid}"
-    await event.edit("`let me kang this sticker hehe`")
+    await event.edit("let me kang this sticker hehe")
 
     is_a_s = is_it_animated_sticker(reply_message)
     file_ext_ns_ion = "Anubis69_roxx.png"
@@ -67,7 +67,7 @@ async def _(event):
         #else:
         packshortname = f"{user.id}'s_animated_{pack}" # format: Uni_Borg_userid
     elif not is_message_image(reply_message):
-        await event.edit("`invalid message type`")
+        await event.edit("invalid message type")
         return
     else:
         with BytesIO(file) as mem_file, BytesIO() as sticker:
@@ -80,14 +80,14 @@ async def _(event):
         now = datetime.datetime.now()
         dt = now + datetime.timedelta(minutes=1)
         if not await stickerset_exists(bot_conv, packshortname):
-            await event.edit("`creating a new pack!`")
+            await event.edit("creating a new pack!")
             await silently_send_message(bot_conv, "/cancel")
             if is_a_s:
                 response = await silently_send_message(bot_conv, "/newanimated")
             else:
                 response = await silently_send_message(bot_conv, "/newpack")
             if "Yay!" not in response.text:
-                await event.edit(f"`failed! @Stickers replied: {response.text}`")
+                await event.edit(f"failed! @Stickers replied:` {response.text}`")
                 return
             response = await silently_send_message(bot_conv, packname)
             if not response.text.startswith("alright!"):
@@ -95,7 +95,7 @@ async def _(event):
                     packname = f"{user.id}'s vol.{pack}"
                     response = await silently_send_message(bot_conv, packname)
                 else:
-                    await event.edit(f"`failed! @Stickers replied: {response.text}`")
+                    await event.edit(f"failed! @Stickers replied:` {response.text}`")
             w = await bot_conv.send_file(
                 file=uploaded_sticker,
                 allow_cache=False,
@@ -103,7 +103,7 @@ async def _(event):
             )
             response = await bot_conv.get_response()
             if "Sorry" in response.text:
-                await event.edit(f"`failed! @Stickers replied: {response.text}`")
+                await event.edit(f"failed! @Stickers replied:` {response.text}`")
                 return
             await silently_send_message(bot_conv, sticker_emoji)
             await silently_send_message(bot_conv, "/publish")
@@ -111,7 +111,7 @@ async def _(event):
             await silently_send_message(bot_conv, "/skip")
             response = await silently_send_message(bot_conv, packshortname)
             if response.text == "Sorry, this short name is already taken.":
-                await event.edit(f"`failed! @Stickers replied: {response.text}`")
+                await event.edit(f"failed! @Stickers replied:` {response.text}`")
                 return
             elif response.text == "Sorry, this short name is unacceptable.":
                 packshortname = f"pack_{pack}_animated_{user.id}"
@@ -131,15 +131,15 @@ async def _(event):
                     pack += 1
                     prevv = int(pack) - 1
                     packname = f"{user.first_name}'s vol.{pack}"
-                    packshortname = f"Vol._{pack}_with_{userid}"
+                    packshortname = f"vol._{pack}_with_{userid}"
                     if not await stickerset_exists(bot_conv, packshortname):
-                        await event.edit("`pack no. `" + str(prevv) + "` full! creating a new pack vol. `" + str(pack))
+                        await event.edit("pack no. `" + str(prevv) + "` full! creating a new pack vol. `" + str(pack) + "`")
                         if is_a_s:
                             response = await silently_send_message(bot_conv, "/newanimated")
                         else:
                             response = await silently_send_message(bot_conv, "/newpack")
                         if "Yay!" not in response.text:
-                            await event.edit(f"`failed! @Stickers replied: {response.text}`")
+                            await event.edit(f"failed! @Stickers replied:` {response.text}`")
                             return
                         response = await silently_send_message(bot_conv, packname)
                         if not response.text.startswith("Alright!"):
@@ -147,7 +147,7 @@ async def _(event):
                                 packname = f"{user.id}'s vol.{pack}"
                                 response = await silently_send_message(bot_conv, packname)
                             else:
-                                await event.edit(f"`failed! @Stickers replied: {response.text}`")
+                                await event.edit(f"failed! @Stickers replied:` {response.text}`")
                         w = await bot_conv.send_file(
                             file=uploaded_sticker,
                             allow_cache=False,
@@ -155,7 +155,7 @@ async def _(event):
                         )
                         response = await bot_conv.get_response()
                         if "Sorry" in response.text:
-                            await event.edit(f"`failed! @Stickers replied: {response.text}`")
+                            await event.edit(f"failed! @Stickers replied:` {response.text}`")
                             return
                         await silently_send_message(bot_conv, sticker_emoji)
                         await silently_send_message(bot_conv, "/publish")
@@ -163,13 +163,13 @@ async def _(event):
                         await silently_send_message(bot_conv, "/skip")
                         response = await silently_send_message(bot_conv, packshortname)
                         if response.text == "Sorry, this short name is already taken.":
-                            await event.edit(f"`failed! @Stickers replied: {response.text}`")
+                            await event.edit(f"failed! @Stickers replied:` {response.text}`")
                             return
                         elif response.text == "Sorry, this short name is unacceptable.":
                             packshortname = f"pack_{pack}_animated_{user.id}"
                             await silently_send_message(bot_conv, packshortname)
                     else:
-                        await event.edit("`pack no. `" + str(prevv) + "` full! switching to vol. `" + str(pack))
+                        await event.edit("pack no. `" + str(prevv) + "` full! switching to vol. `" + str(pack) + "`")
                         await silently_send_message(bot_conv, "/addsticker")
                         await silently_send_message(bot_conv, packshortname)                                                                            
                         await bot_conv.send_file(
@@ -179,20 +179,20 @@ async def _(event):
                         )
                         response = await bot_conv.get_response()
                         if "Sorry" in response.text:
-                            await event.edit(f"`failed! @Stickers replied: {response.text}`")
+                            await event.edit(f"failed! @Stickers replied:` {response.text}`")
                             return
                         await silently_send_message(bot_conv, sticker_emoji)
                         await silently_send_message(bot_conv, "/done")
             else:
                 if "Sorry" in response.text:
-                    await event.edit(f"`failed! @Stickers replied: {response.text}`")
+                    await event.edit(f"failed! @Stickers replied:` {response.text}`")
                     return
                 await silently_send_message(bot_conv, response)
                 await silently_send_message(bot_conv, sticker_emoji)
                 await silently_send_message(bot_conv, "/done")
 
 
-    await event.edit(f"`kanged! this sticker has been stolen to [this place](t.me/addstickers/{packshortname})`")
+    await event.edit(f"kanged! this sticker has been stolen to [this place](t.me/addstickers/{packshortname})")
 
 
 @borg.on(admin_cmd(pattern="packinfo"))
@@ -200,16 +200,16 @@ async def _(event):
     if event.fwd_from:
         return
     if not event.is_reply:
-        await event.edit("`reply to any sticker to get it's pack info.`")
+        await event.edit("reply to any sticker to get it's pack info.")
         return
     rep_msg = await event.get_reply_message()
     if not rep_msg.document:
-        await event.edit("`reply to any sticker to get it's pack info.`")
+        await event.edit("reply to any sticker to get it's pack info.")
         return
     stickerset_attr_s = rep_msg.document.attributes
     stickerset_attr = find_instance(stickerset_attr_s, DocumentAttributeSticker)
     if not stickerset_attr.stickerset:
-        await event.edit("`sticker does not belong to a pack.`")
+        await event.edit("sticker does not belong to a pack.")
         return
     get_stickerset = await borg(
         GetStickerSetRequest(
@@ -223,12 +223,12 @@ async def _(event):
     for document_sticker in get_stickerset.packs:
         if document_sticker.emoticon not in pack_emojis:
             pack_emojis.append(document_sticker.emoticon)
-    await event.edit(f"`sticker title: {get_stickerset.set.title}\n`"
-                     f"`sticker short name: {get_stickerset.set.short_name}`\n"
-                     f"`official: {get_stickerset.set.official}`\n"
-                     f"`archived: {get_stickerset.set.archived}`\n"
-                     f"`stickers in pack: {len(get_stickerset.packs)}`\n"
-                     f"`emojis in pack: {' '.join(pack_emojis)}`")
+    await event.edit(f"sticker title: `{get_stickerset.set.title}`\n"
+                     f"sticker short name: `{get_stickerset.set.short_name}`\n"
+                     f"official: `{get_stickerset.set.official}`\n"
+                     f"archived: `{get_stickerset.set.archived}`\n"
+                     f"stickers in pack: `{len(get_stickerset.packs)}`\n"
+                     f"emojis in pack: `{' '.join(pack_emojis)}`")
 
 
 @borg.on(admin_cmd(pattern="getsticker ?(.*)"))
@@ -246,14 +246,14 @@ async def _(event):
         sticker = reply_message.sticker
         sticker_attrib = find_instance(sticker.attributes, DocumentAttributeSticker)
         if not sticker_attrib.stickerset:
-            await event.reply("`this sticker is not part of a pack`")
+            await event.reply("this sticker is not part of a pack")
             return
         is_a_s = is_it_animated_sticker(reply_message)
         file_ext_ns_ion = "webp"
         file_caption = "https://t.me/RoseSupport/33801"
         if is_a_s:
             file_ext_ns_ion = "tgs"
-            file_caption = "`forward the zip file to @AnimatedStickersRoBot to get lottie json containing the vector information.`"
+            file_caption = "forward the zip file to @AnimatedStickersRoBot to get lottie json containing the vector information."
         sticker_set = await borg(GetStickerSetRequest(sticker_attrib.stickerset))
         pack_file = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, sticker_set.set.short_name, "pack.txt")
         if os.path.isfile(pack_file):
@@ -275,19 +275,19 @@ async def _(event):
                 download(document, emojis, Config.TMP_DOWNLOAD_DIRECTORY + sticker_set.set.short_name, f"{i:03d}.{file_ext_ns_ion}")
             ) for i, document in enumerate(sticker_set.documents)
         ]
-        await event.edit(f"`downloading {sticker_set.set.count} sticker(s) to .{Config.TMP_DOWNLOAD_DIRECTORY}{sticker_set.set.short_name}...`")
+        await event.edit(f"downloading `{sticker_set.set.count}` sticker(s) to `.{Config.TMP_DOWNLOAD_DIRECTORY}{sticker_set.set.short_name}`...")
         num_tasks = len(pending_tasks)
         while 1:
             done, pending_tasks = await asyncio.wait(pending_tasks, timeout=2.5,
                 return_when=asyncio.FIRST_COMPLETED)
             try:
                 await event.edit(
-                    f"`downloaded {num_tasks - len(pending_tasks)}/{sticker_set.set.count}`")
+                    f"downloaded `{num_tasks - len(pending_tasks)}`/`{sticker_set.set.count}`")
             except MessageNotModifiedError:
                 pass
             if not pending_tasks:
                 break
-        await event.edit("`downloading to my local completed`")
+        await event.edit("downloading to my local completed")
         # https://gist.github.com/udf/e4e3dbb2e831c8b580d8fddd312714f7
         directory_name = Config.TMP_DOWNLOAD_DIRECTORY + sticker_set.set.short_name
         zipf = zipfile.ZipFile(directory_name + ".zip", "w", zipfile.ZIP_DEFLATED)
@@ -307,11 +307,11 @@ async def _(event):
             os.remove(directory_name)
         except:
             pass
-        await event.edit("`task completed`")
+        await event.edit("task completed")
         await asyncio.sleep(3)
         await event.delete()
     else:
-        await event.edit("`todo: not implemented`")
+        await event.edit("todo: not implemented")
 
 
 # Helpers

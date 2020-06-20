@@ -23,7 +23,7 @@ async def _(event):
     elif "|" in input_str:
         lan, text = input_str.split("|")
     else:
-        await event.edit("`.tr language as reply to a message`")
+        await event.edit("`.tr language` as reply to a message")
         return
     text = emoji.demojize(text.strip())
     lan = lan.strip()
@@ -33,7 +33,7 @@ async def _(event):
         after_tr_text = translated.text
         # TODO: emojify the :
         # either here, or before translation
-        output_str = """`translated from {} to {}`\n
+        output_str = """translated from `{}` to `{}`\n
 `{}`""".format(
             translated.src,
             lan,
