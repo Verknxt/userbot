@@ -5,7 +5,7 @@ from telethon.tl import functions, types
 from userbot.utils import admin_cmd
 
 
-@borg.on(admin_cmd("cpin ?(.*)"))
+@borg.on(admin_cmd("pin ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -27,4 +27,4 @@ async def _(event):
             await event.delete()
             
     else:
-        await event.edit("`reply to a message to pin it in this channel.`")
+        await event.edit("`reply to a message to pin the message.`")

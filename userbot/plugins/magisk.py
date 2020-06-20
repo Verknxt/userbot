@@ -33,8 +33,8 @@ async def magisk(request):
     releases = '`latest magisk releases:`\n'
     for name, release_url in magisk_dict.items():
         data = get(release_url).json()
-        releases += f'{name}: [zip v{data["magisk"]["version"]}]({data["magisk"]["link"]}) `|` ' \
-                    f'[apk v{data["app"]["version"]}]({data["app"]["link"]}) `|` ' \
+        releases += f'{name}: [zip v{data["magisk"]["version"]}]({data["magisk"]["link"]}) | ' \
+                    f'[apk v{data["app"]["version"]}]({data["app"]["link"]}) | ' \
                     f'[uninstaller]({data["uninstaller"]["link"]})\n'
     await request.edit(releases)
 
