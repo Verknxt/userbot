@@ -158,7 +158,7 @@ async def check_progress_for_dl(gid, event, previous):
                     msg = previous
             else:
                 await event.edit(f"`{msg}`")
-            await sleep(0)
+            await sleep(2.5)
             await check_progress_for_dl(gid, event, previous)
             file = aria2.get_download(gid)
             complete = file.is_complete
