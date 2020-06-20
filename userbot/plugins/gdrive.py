@@ -301,7 +301,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
                 "".join(["░" for i in range(20 - math.floor(percentage / 5))]),
                 round(percentage, 2)
             )
-            current_message = f"`uploading to gdrive:\nfilename: {file_name}\n{progress_str}``"
+            current_message = f"`uploading to gdrive:`\n`filename: {file_name}`\n`{progress_str}`"
             if display_message != current_message:
                 try:
                     await event.edit(current_message)

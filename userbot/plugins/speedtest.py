@@ -26,12 +26,10 @@ async def speedtest(spd):
     test.results.share()
     result = test.results.dict()
 
-    await spd.edit("`"
-                   "download: "
-                   f"{speed_convert(result['download'])} \n"
-                   "upload: "
-                   f"{speed_convert(result['upload'])} \n"
-                   "`")
+    await spd.edit("`download: "
+                   f"{speed_convert(result['download'])} `\n"
+                   "`upload: "
+                   f"{speed_convert(result['upload'])} `\n")
 
 
 def speed_convert(size):

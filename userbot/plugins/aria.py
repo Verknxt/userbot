@@ -127,7 +127,7 @@ async def resume_all(event):
 async def check_metadata(gid):
     file = aria2.get_download(gid)
     new_gid = file.followed_by_ids[0]
-    LOGS.info("Changing GID " + gid + " to" + new_gid)
+    LOGS.info("changing gid " + gid + " to" + new_gid)
     return new_gid
 
 
@@ -140,64 +140,44 @@ async def check_progress_for_dl(gid, event, previous):
             if not complete and not file.error_message:
                 percentage = int(file.progress)
                 downloaded = percentage * int(file.total_length) / 100
-                prog_str = "`downloading | [{0}{1}] {2}`".format(
-                    "`".join(["■" for i in range(
+                prog_str = "downloading | [{0}{1}] {2}".format(
+                    "".join(["■" for i in range(
                             math.floor(percentage / 10))]),
-                    "`".join(["▨" for i in range(
+                    "".join(["▨" for i in range(
                             10 - math.floor(percentage / 10))]),
                     file.progress_string())
                 msg = (
-                    "`"
-                    f"filename: {file.name}\n"
-                    f"status -> {file.status.capitalize()}\n"
-                    f"{prog_str}\n"
-                    f"{humanbytes(downloaded)} of {file.total_length_string()} @ {file.download_speed_string()}\n"
-                    f"eta -> {file.eta_string()}\n"
-                    "`"
+                    f"`filename: {file.name}`\n"
+                    f"`status -> {file.status.capitalize()}`\n"
+                    f"`{prog_str}`\n"
+                    f"`{humanbytes(downloaded)} of {file.total_length_string()} @ {file.download_speed_string()}`\n"
+                    f"`eta -> {file.eta_string()}`\n"
                 )
                 if msg != previous:
-                    await event.edit(
-                       "`"
-                       f"filename: {file.name}\n"
-                       f"status -> {file.status.capitalize()}\n"
-                       f"{prog_str}\n"
-                       f"{humanbytes(downloaded)} of {file.total_length_string()} @ {file.download_speed_string()}\n"
-                       f"eta -> {file.eta_string()}\n"
-                        "`"
-                    )
+                    await event.edit(msg)
                     msg = previous
             else:
-                await event.edit(
-                       "`"
-                       f"filename: {file.name}\n"
-                       f"status -> {file.status.capitalize()}\n"
-                       f"{prog_str}\n"
-                       f"{humanbytes(downloaded)} of {file.total_length_string()} @ {file.download_speed_string()}\n"
-                       f"eta -> {file.eta_string()}\n"
-                        "`"
-                    )
+                await event.edit(f"`{msg}`")
             await sleep(5)
             await check_progress_for_dl(gid, event, previous)
             file = aria2.get_download(gid)
             complete = file.is_complete
             if complete:
                 return await event.edit(
-                    "`"
-                    f"filename: {file.name}\n"
-                    f"size: {file.total_length_string()}\n"
-                    f"path: {TEMP_DOWNLOAD_DIRECTORY + file.name}\n"
-                    "response: ok - successfully downloaded"
-                    "`"
+                    f"`filename: {file.name}`\n"
+                    f"`size: {file.total_length_string()}`\n"
+                    f"`path: {TEMP_DOWNLOAD_DIRECTORY + file.name}`\n"
+                    "`response: ok - successfully downloaded`"
                 )
         except Exception as e:
             if " not found" in str(e) or "'file'" in str(e):
-                await event.edit("`download canceled:\n{}`".format(file.name))
+                await event.edit("`download canceled:`\n`{}`".format(file.name))
                 await sleep(2.5)
                 return await event.delete()
             elif " depth exceeded" in str(e):
                 file.remove(force=True)
                 await event.edit(
-                    "`download auto canceled :\n{}\nyour torrent/link is dead.`"
+                    "`download auto canceled:`\n`{}`\n`your torrent/link is dead.`"
                     .format(file.name))
 
 
