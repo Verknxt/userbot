@@ -38,9 +38,9 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 async def _(event):
     if event.fwd_from:
         return
-    mone = await event.reply("`processing...`")
+    mone = await event.reply("processing...")
     if CLIENT_ID is None or CLIENT_SECRET is None:
-        await mone.edit("`this module requires credentials from https://da.gd/so63O aborting!`")
+        await mone.edit("this module requires credentials from https://da.gd/so63O aborting!")
         return False
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(Var.TEMP_DOWNLOAD_DIRECTORY):
@@ -51,7 +51,7 @@ async def _(event):
         reply_message = await event.get_reply_message()
         try:
             c_time = time.time()
-            await mone.edit("`downloading to local...`")
+            await mone.edit("downloading to local...")
             downloaded_file_name = await bot.download_media(
                 reply_message,
                 Var.TEMP_DOWNLOAD_DIRECTORY
@@ -63,16 +63,16 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             required_file_name = downloaded_file_name
-            await mone.edit("`downloaded to {} in {} seconds.`".format(downloaded_file_name, ms))
+            await mone.edit("downloaded to `{}` in `{}` seconds.".format(downloaded_file_name, ms))
     elif input_str:
         input_str = input_str.strip()
         if os.path.exists(input_str):
             end = datetime.now()
             ms = (end - start).seconds
             required_file_name = input_str
-            await mone.edit("`found {} in {} seconds.`".format(input_str, ms))
+            await mone.edit("found `{}` in `{}` seconds.".format(input_str, ms))
         else:
-            await mone.edit("`file not found in local server give me a file path`")
+            await mone.edit("file not found in local server give me a file path")
             return False
     # logger.info(required_file_name)
     if required_file_name:
@@ -85,26 +85,26 @@ async def _(event):
             http = authorize(G_DRIVE_TOKEN_FILE, storage)
             f = open(G_DRIVE_TOKEN_FILE, "r")
             token_file_data = f.read()
-            await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "`please add Var AUTH_TOKEN_DATA with the following value:`\n\n`" + token_file_data + "`")
+            await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "please add var `AUTH_TOKEN_DATA` with the following value:\n\n`" + token_file_data + "`")
         # Authorize, get file parameters, upload file and print out result URL for download
         http = authorize(G_DRIVE_TOKEN_FILE, None)
         file_name, mime_type = file_ops(required_file_name)
         # required_file_name will have the full path
         # Sometimes API fails to retrieve starting URI, we wrap it.
         try:
-            g_drive_link = await upload_file(http, required_file_name, file_name, mime_type,mone,parent_id)
-            await mone.edit("`successfully uploaded file on gdrive:`\n[{}]({})".format(file_name,g_drive_link))
+            end = datetime.now() ms = (end - start).seconds g_drive_link = await upload_file(http, required_file_name, file_name, mime_type,mone,parent_id)
+            await mone.edit("`uploaded successfully in {} seconds`\n📄 [{}]({})".format(ms,file_name,g_drive_link))
         except Exception as e:
-            await mone.edit(f"`exception occurred while uploading to gdrive {e}`")
+            await mone.edit(f"exception occurred while uploading to gdrive `{e}`")
     else:
-        await mone.edit("`file not found in local server give me a file path`")
+        await mone.edit("file not found in local server give me a file path")
 
 @command(pattern="^.drivesch ?(.*)")
 async def sch(event):
     if event.fwd_from:
         return
     if CLIENT_ID is None or CLIENT_SECRET is None:
-        await event.edit("`this module requires credentials from https://da.gd/so63O aborting!`")
+        await event.edit("this module requires credentials from https://da.gd/so63O aborting!")
         return False    
     try:
         with open(G_DRIVE_TOKEN_FILE) as f:
@@ -114,11 +114,11 @@ async def sch(event):
         http = authorize(G_DRIVE_TOKEN_FILE, storage)
         f = open(G_DRIVE_TOKEN_FILE, "r")
         token_file_data = f.read()
-        await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "`please add Var AUTH_TOKEN_DATA with the following value:`\n\n`" + token_file_data + "`")
+        await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "please add var `AUTH_TOKEN_DATA` with the following value:\n\n`" + token_file_data + "`")
         # Authorize, get file parameters, upload file and print out result URL for download
     http = authorize(G_DRIVE_TOKEN_FILE, None)    
     input_str = event.pattern_match.group(1).strip()
-    await event.edit("`searching for {} in gdrive.`".format(input_str))
+    await event.edit("searching for `{}` in gdrive.".format(input_str))
     if parent_id is not None:
         query = "'{}' in parents and (title contains '{}')".format(parent_id, input_str)
     else:
@@ -131,7 +131,7 @@ async def sch(event):
 async def gsearch(http,query,filename):
     drive_service = build("drive", "v2", http=http)
     page_token = None
-    msg = "`gdrive search query\n`"+filename+"`\n`results`\n"
+    msg = "gdrive search query\n`"+filename+"`\nresults\n"
     while True:
         response = drive_service.files().list(q=query,
                                           spaces='drive',
@@ -154,10 +154,10 @@ async def _(event):
     if event.fwd_from:
         return
     if CLIENT_ID is None or CLIENT_SECRET is None:
-        await event.edit("`this module requires credentials from https://da.gd/so63O aborting!`")
+        await event.edit("this module requires credentials from https://da.gd/so63O aborting!")
         return
     if Var.PRIVATE_GROUP_ID is None:
-        await event.edit("`please set the required environment variable `PRIVATE_GROUP_ID` for this plugin to work`")
+        await event.edit("please set the required environment variable `PRIVATE_GROUP_ID` for this plugin to work")
         return
     input_str = event.pattern_match.group(1)
     if os.path.isdir(input_str):
@@ -173,16 +173,16 @@ async def _(event):
         http = authorize(G_DRIVE_TOKEN_FILE, storage)
         f = open(G_DRIVE_TOKEN_FILE, "r")
         token_file_data = f.read()
-        await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "please add var AUTH_TOKEN_DATA with the following value:`\n\n`" + token_file_data + "`")
+        await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "please add var `AUTH_TOKEN_DATA` with the following value:\n\n`" + token_file_data + "`")
         # Authorize, get file parameters, upload file and print out result URL for download
         # first, create a sub-directory
-        await event.edit("`uploading {} to gdrive...`".format(input_str))
+        await event.edit("uploading `{}` to gdrive...".format(input_str))
         dir_id = await create_directory(http, os.path.basename(os.path.abspath(input_str)), parent_id)
         await DoTeskWithDir(http, input_str, event, dir_id)
         dir_link = "https://drive.google.com/folderview?id={}".format(dir_id)
-        await event.edit(f"`successfully uploaded folder to gdrive:`\n[{input_str}]({dir_link})")
+        await event.edit(f"successfully uploaded folder to gdrive:\n[{input_str}]({dir_link})")
     else:
-        await event.edit(f"`directory {input_str} does not seem to exist`")
+        await event.edit(f"directory `{input_str}` does not seem to exist")
 
 async def create_directory(http, directory_name, parent_id):
     drive_service = build("drive", "v2", http=http, cache_discovery=False)
@@ -242,7 +242,7 @@ async def create_token_file(token_file, event):
     )
     authorize_url = flow.step1_get_authorize_url()
     async with bot.conversation(int(Var.PRIVATE_GROUP_ID)) as conv:
-        await conv.send_message(f"`go to the following link in your browser: {authorize_url} and reply the code`")
+        await conv.send_message(f"go to the following link in your browser: {authorize_url} and reply the code")
         response = conv.wait_event(events.NewMessage(
             outgoing=True,
             chats=int(Var.PRIVATE_GROUP_ID)
@@ -301,7 +301,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
                 "".join(["░" for i in range(20 - math.floor(percentage / 5))]),
                 round(percentage, 2)
             )
-            current_message = f"`uploading to gdrive:`\n`filename: {file_name}`\n`{progress_str}`"
+            current_message = f"uploading to gdrive:\nfilename: `{file_name}`\n`{progress_str}`"
             if display_message != current_message:
                 try:
                     await event.edit(current_message)
@@ -323,4 +323,4 @@ async def _(event):
     if event.fwd_from:
         return
     folder_link = "https://drive.google.com/folderview?id="+parent_id    
-    await event.edit("`here is your gdrive folder link:\n`"+folder_link)
+    await event.edit("here is your gdrive folder link:\n"+folder_link)
