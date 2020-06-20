@@ -51,7 +51,6 @@ async def _(event):
         reply_message = await event.get_reply_message()
         try:
             c_time = time.time()
-            await mone.edit("downloading to local...")
             downloaded_file_name = await bot.download_media(
                 reply_message,
                 Var.TEMP_DOWNLOAD_DIRECTORY
@@ -63,7 +62,6 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             required_file_name = downloaded_file_name
-            await mone.edit("downloaded to `{}` in `{}` seconds.".format(downloaded_file_name, ms))
     elif input_str:
         input_str = input_str.strip()
         if os.path.exists(input_str):
@@ -93,7 +91,7 @@ async def _(event):
         # Sometimes API fails to retrieve starting URI, we wrap it.
         try:
             g_drive_link = await upload_file(http, required_file_name, file_name, mime_type,mone,parent_id)
-            await mone.edit("`uploaded successfully in {} seconds`\n📄 [{}]({})".format(ms,file_name,g_drive_link))
+            await mone.edit("uploaded successfully in `{}` seconds\n\n📄 [{}]({})".format(ms,file_name,g_drive_link))
         except Exception as e:
             await mone.edit(f"exception occurred while uploading to gdrive `{e}`")
     else:
