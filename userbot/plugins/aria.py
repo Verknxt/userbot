@@ -141,16 +141,16 @@ async def check_progress_for_dl(gid, event, previous):
                 percentage = int(file.progress)
                 downloaded = percentage * int(file.total_length) / 100
                 prog_str = "`downloading | [{0}{1}] {2}`".format(
-                    "".join(["■" for i in range(
+                    "`".join(["■" for i in range(
                             math.floor(percentage / 10))]),
-                    "".join(["▨" for i in range(
+                    "`".join(["▨" for i in range(
                             10 - math.floor(percentage / 10))]),
                     file.progress_string())
                 msg = (
                     "`"
                     f"filename: {file.name}\n"
                     f"status -> {file.status.capitalize()}\n"
-                    f"`{prog_str}`\n"
+                    f"{prog_str}\n"
                     f"{humanbytes(downloaded)} of {file.total_length_string()} @ {file.download_speed_string()}\n"
                     f"eta -> {file.eta_string()}\n"
                     "`"
@@ -166,10 +166,12 @@ async def check_progress_for_dl(gid, event, previous):
             complete = file.is_complete
             if complete:
                 return await event.edit(
-                    f"`filename: {file.name}\n`"
-                    f"`size: {file.total_length_string()}\n`"
-                    f"`path: {TEMP_DOWNLOAD_DIRECTORY + file.name}\n`"
-                    "`response: ok - successfully downloaded...`"
+                    "`"
+                    f"filename: {file.name}\n"
+                    f"size: {file.total_length_string()}\n"
+                    f"path: {TEMP_DOWNLOAD_DIRECTORY + file.name}\n"
+                    "response: ok - successfully downloaded"
+                    "`"
                 )
         except Exception as e:
             if " not found" in str(e) or "'file'" in str(e):
