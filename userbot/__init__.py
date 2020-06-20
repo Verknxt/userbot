@@ -66,7 +66,7 @@ if bool(ENV):
 
     if CONFIG_CHECK:
         LOGS.info(
-            "Please remove the line mentioned in the first hashtag from the config.env file"
+            "please remove the line mentioned in the first hashtag from the config.env file"
         )
         quit(1)
 
