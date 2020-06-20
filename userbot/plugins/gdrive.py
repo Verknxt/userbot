@@ -86,6 +86,8 @@ async def _(event):
         # required_file_name will have the full path
         # Sometimes API fails to retrieve starting URI, we wrap it.
         try:
+            end = datetime.now()
+            ms = (end - start).seconds
             g_drive_link = await upload_file(http, required_file_name, file_name, mime_type,mone,parent_id)
             await mone.edit("uploaded successfully in `{}` seconds\n\n📄 [{}]({})".format(ms,file_name,g_drive_link))
         except Exception as e:
@@ -290,12 +292,9 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
         await asyncio.sleep(1)
         if status:
             percentage = int(status.progress() * 100)
-            progress_str = "[{0}{1}]\nprogress: {2}%\n".format(
-                "".join(["█" for i in range(math.floor(percentage / 5))]),
-                "".join(["░" for i in range(20 - math.floor(percentage / 5))]),
-                round(percentage, 2)
+            progress_str = "uploading to gdrive..."
             )
-            current_message = f"uploading to gdrive:\nfilename: `{file_name}`\n`{progress_str}`"
+            current_message = "uploading to gdrive..."
             if display_message != current_message:
                 try:
                     await event.edit(current_message)
