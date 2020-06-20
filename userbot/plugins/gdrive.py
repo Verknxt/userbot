@@ -58,13 +58,13 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             required_file_name = downloaded_file_name
+            await mone.edit("uploading to gdrive...")
     elif input_str:
         input_str = input_str.strip()
         if os.path.exists(input_str):
             end = datetime.now()
             ms = (end - start).seconds
             required_file_name = input_str
-            await mone.edit("found `{}` in `{}` seconds.".format(input_str, ms))
         else:
             await mone.edit("file not found in local server give me a file path")
             return False
