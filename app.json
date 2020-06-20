@@ -34,16 +34,6 @@
       "description": "get this value by running python3 telesetup.py locally",
       "value": ""
     },
-    "GITHUB_ACCESS_TOKEN": {
-      "description": "get this value from github.com/settings/tokens! please do not steal",
-      "value": "",
-      "required": false
-    },
-    "GIT_REPO_NAME": {
-      "description": "your repo name example: verknxt/userbot but GITHUB_ACCESS_TOKEN must be setup first.",
-      "value": "",
-      "required": false
-    },
     "TG_BOT_TOKEN_BF_HER": {
       "description": "needed for inline buttons maker make a bot at http://telegram.dog/BotFather and get the token of your bot it's worth it",
       "value": "",
