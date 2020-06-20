@@ -151,7 +151,7 @@ async def check_progress_for_dl(gid, event, previous):
                     f"status -> `{file.status.capitalize()}`\n"
                     f"{prog_str}\n"
                     f"`{humanbytes(downloaded)}` of `{file.total_length_string()}` @ `{file.download_speed_string()}`\n"
-                    f"`eta -> {file.eta_string()}`\n"
+                    f"eta -> `{file.eta_string()}`\n"
                 )
                 if msg != previous:
                     await event.edit(msg)
