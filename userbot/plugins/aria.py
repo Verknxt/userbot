@@ -156,10 +156,26 @@ async def check_progress_for_dl(gid, event, previous):
                     "`"
                 )
                 if msg != previous:
-                    await event.edit(msg)
+                    await event.edit(
+                       "`"
+                       f"filename: {file.name}\n"
+                       f"status -> {file.status.capitalize()}\n"
+                       f"{prog_str}\n"
+                       f"{humanbytes(downloaded)} of {file.total_length_string()} @ {file.download_speed_string()}\n"
+                       f"eta -> {file.eta_string()}\n"
+                        "`"
+                    )
                     msg = previous
             else:
-                await event.edit(f"`{msg}`")
+                await event.edit(
+                       "`"
+                       f"filename: {file.name}\n"
+                       f"status -> {file.status.capitalize()}\n"
+                       f"{prog_str}\n"
+                       f"{humanbytes(downloaded)} of {file.total_length_string()} @ {file.download_speed_string()}\n"
+                       f"eta -> {file.eta_string()}\n"
+                        "`"
+                    )
             await sleep(5)
             await check_progress_for_dl(gid, event, previous)
             file = aria2.get_download(gid)
