@@ -82,7 +82,7 @@ async def unload(event):
         remove_plugin(shortname)
         await event.edit(f"`unloaded {shortname} successfully`")
     except Exception as e:
-        await event.edit("`successfully unload {shortname}\n{}`".format(shortname, str(e)))
+        await event.edit("`successfully unloaded {shortname}\n{}`".format(shortname, str(e)))
 
 @command(pattern="^.load (?P<shortname>\w+)$", outgoing=True)
 async def load(event):
