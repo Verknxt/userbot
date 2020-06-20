@@ -293,7 +293,6 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
         if status:
             percentage = int(status.progress() * 100)
             progress_str = "uploading to gdrive..."
-            )
             current_message = "uploading to gdrive..."
             if display_message != current_message:
                 try:
