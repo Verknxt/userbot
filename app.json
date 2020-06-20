@@ -53,6 +53,21 @@
       "description": "needed for inline buttons maker make a bot at http://telegram.dog/BotFather and get the username of your bot it's worth it",
       "value": "",
       "required": true
+    },
+    "PRIVATE_GROUP_ID": {
+      "description": "",
+      "value": "",
+      "required": true
+    },
+    "G_DRIVE_CLIENT_ID": {
+      "description": "",
+      "value": "",
+      "required": true
+    },
+    "G_DRIVE_CLIENT_SECRET": {
+      "description": "",
+      "value": "",
+      "required": true
     }
   },
   "addons": [{

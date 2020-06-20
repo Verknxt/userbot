@@ -42,7 +42,7 @@ async def _(event):
     else:
         evaluation = "Success"
 
-    final_output = "`exec: {} \n\n output: \n{} \n`".format(cmd, evaluation)
+    final_output = "`exec: {}\n\noutput: \n{}`".format(cmd, evaluation)
 
     if len(final_output) > 4096:
         with io.BytesIO(str.encode(final_output)) as out_file:
