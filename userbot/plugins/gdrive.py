@@ -38,6 +38,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 async def _(event):
     if event.fwd_from:
         return
+        mone = await event.reply("")
     if CLIENT_ID is None or CLIENT_SECRET is None:
         await mone.edit("this module requires credentials from https://da.gd/so63O aborting!")
         return False
