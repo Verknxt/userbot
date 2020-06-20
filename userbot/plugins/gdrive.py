@@ -38,7 +38,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 async def _(event):
     if event.fwd_from:
         return
-        mone = await event.reply("r")
+        mone = await event.reply("")
     if CLIENT_ID is None or CLIENT_SECRET is None:
         await mone.edit("this module requires credentials from https://da.gd/so63O aborting!")
         return False
@@ -51,7 +51,7 @@ async def _(event):
         reply_message = await event.get_reply_message()
         try:
             c_time = time.time()
-            await mone.edit("uploading...")
+            await mone.edit("downloading from telegram...")
             downloaded_file_name = await bot.download_media(
                 reply_message,
                 Var.TEMP_DOWNLOAD_DIRECTORY
@@ -63,6 +63,7 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             required_file_name = downloaded_file_name
+            await mone.edit("uploading to gdrive...")
     elif input_str:
         input_str = input_str.strip()
         if os.path.exists(input_str):
