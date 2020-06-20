@@ -1,8 +1,3 @@
-# The entire code given below is verbatim copied from
-# https://github.com/cyberboysumanjay/Gdrivedownloader/blob/master/gdrive_upload.py
-# there might be some changes made to suit the needs for this repository
-# Licensed under MIT License
-
 import asyncio
 import os
 import time
@@ -51,7 +46,6 @@ async def _(event):
         reply_message = await event.get_reply_message()
         try:
             c_time = time.time()
-            await mone.edit("downloading from telegram...")
             downloaded_file_name = await bot.download_media(
                 reply_message,
                 Var.TEMP_DOWNLOAD_DIRECTORY
@@ -63,7 +57,6 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             required_file_name = downloaded_file_name
-            await mone.edit("uploading to gdrive...")
     elif input_str:
         input_str = input_str.strip()
         if os.path.exists(input_str):
