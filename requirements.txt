@@ -1,3 +1,2 @@
-self
 telethon==1.14.0
 -r requirements-startup.txt
