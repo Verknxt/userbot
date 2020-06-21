@@ -42,10 +42,10 @@ async def install(event):
                 path1 = Path(downloaded_file_name)
                 shortname = path1.stem
                 load_module(shortname.replace(".py", ""))
-                await event.edit("`installed plugin {}`".format(os.path.basename(downloaded_file_name)))
+                await event.edit("installed plugin `{}`".format(os.path.basename(downloaded_file_name)))
             else:
                 os.remove(downloaded_file_name)
-                await event.edit("`error! this plugin is already installed/pre-installed.`")
+                await event.edit("error! this plugin is already installed/pre-installed.")
         except Exception as e:  # pylint:disable=C0103,W0703
             await event.edit(str(e))
             os.remove(downloaded_file_name)
@@ -69,7 +69,7 @@ async def send(event):
     )
     end = datetime.now()
     time_taken_in_ms = (end - start).seconds
-    await event.edit("`uploaded {} in {} seconds`".format(input_str, time_taken_in_ms))
+    await event.edit("uploaded `{}` in `{}` seconds`".format(input_str, time_taken_in_ms))
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
 
