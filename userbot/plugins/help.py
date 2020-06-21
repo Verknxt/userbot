@@ -8,15 +8,15 @@ from userbot.utils import admin_cmd
 
 @command(outgoing=True, pattern="^.help$")
 async def helpcmd(help):
-    await help.edit("⚒ (18) plugins available\n"
+    await help.edit("⚒ (17) plugins available\n"
                      " \n"
-                     "    🎨 fun (3) :   dumpster   spam   wtf\n"
+                     "    🎨 fun (2) :   spam   wtf\n"
                      " \n"
                      "    ⚙️ misc (6) :   aria   gdrive   purge   zombies   json   afk\n"
                      " \n"
                      "    💎 plugins (1) :   help\n"
                      " \n"
-                     "    🧰 tools (6) :   alive   ping power_tools   exec   eval   instant_install_ext_module\n"
+                     "    🧰 tools (6) :   alive   ping   power_tools   exec   eval   instant_install_ext_module\n"
                      " \n"
                      "    🗂 utils (2) :   speedtest   translate\n"
                      " \n"
