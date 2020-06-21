@@ -30,9 +30,7 @@ async def helpcmdspam(helpspam):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.spam`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help wtf$")
 async def helpcmdwtf(helpwtf):
@@ -42,9 +40,7 @@ async def helpcmdwtf(helpwtf):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.wtf`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help aria$")
 async def helpcmdaria(helparia):
@@ -66,9 +62,7 @@ async def helpcmdaria(helparia):
                      "    📚 info:  `none`\n"
                      " \n"
                      "    🤖 cmd(`5`):  `.aresume`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help gdrive$")
 async def helpcmdgdrive(helpgdrive):
@@ -87,9 +81,7 @@ async def helpcmdgdrive(helpgdrive):
                      "    📚 info:  `none`\n"
                      " \n"
                      "    🤖 cmd(`4`):  `.gfolder`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help purge$")
 async def helpcmdpurge(helppurge):
@@ -111,9 +103,7 @@ async def helpcmdpurge(helppurge):
                      "    📚 info:  `none`\n"
                      " \n"
                      "    🤖 cmd(`5`):  `.edit`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help zombies$")
 async def helpcmdzombies(helpzombies):
@@ -123,9 +113,7 @@ async def helpcmdzombies(helpzombies):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.zombies`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help json$")
 async def helpcmdjson(helpjson):
@@ -135,9 +123,7 @@ async def helpcmdjson(helpjson):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.json`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help help$")
 async def helpcmdhelp(helphelp):
@@ -147,9 +133,7 @@ async def helpcmdhelp(helphelp):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.help`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`")
 
 @command(outgoing=True, pattern="^.help alive$")
 async def helpcmdalive(helpalive):
@@ -159,9 +143,7 @@ async def helpcmdalive(helpalive):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.alive`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help ping$")
 async def helpcmdping(helpping):
@@ -171,9 +153,7 @@ async def helpcmdping(helpping):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.ping`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help power_tools$")
 async def helpcmdpower_tools(helppower_tools):
@@ -186,9 +166,7 @@ async def helpcmdpower_tools(helppower_tools):
                      "    📚 info:  `none`\n"
                      " \n"
                      "    🤖 cmd(`2`):  `.shutdown`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help exec$")
 async def helpcmdexec(helpexec):
@@ -198,9 +176,7 @@ async def helpcmdexec(helpexec):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.exec`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help eval$")
 async def helpcmdeval(helpeval):
@@ -210,9 +186,7 @@ async def helpcmdeval(helpeval):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.eval`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help instant_install_ext_module$")
 async def helpcmdinstant_install_ext_module(helpinstant_install_ext_module):
@@ -222,9 +196,7 @@ async def helpcmdinstant_install_ext_module(helpinstant_install_ext_module):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.extdl`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help speedtest$")
 async def helpcmdspeedtest(helpspeedtest):
@@ -234,9 +206,7 @@ async def helpcmdspeedtest(helpspeedtest):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.speedtest`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help translate$")
 async def helpcmdtranslate(helptranslate):
@@ -246,6 +216,4 @@ async def helpcmdtranslate(helptranslate):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.tr`\n"
-                     "    📚 info:  `none`\n"
-                     " \n"
-                     "📕 usage:  `.help [command_name]`\n")
+                     "    📚 info:  `none`\n")
