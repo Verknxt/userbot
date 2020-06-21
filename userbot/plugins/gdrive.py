@@ -89,8 +89,8 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             g_drive_link = await upload_file(http, required_file_name, file_name, mime_type,mone,parent_id)
-            file = self.drive_service.files().get(fileId=file_id, fields='size').execute()
-            await mone.edit("uploaded successfully in `{}` seconds\n\n📄 [{}]({}) ({})".format(ms,file_name,g_drive_link,file))
+            g_drive_size = self.drive_service.files().get(fileId=file_id, fields='size').execute()
+            await mone.edit("uploaded successfully in `{}` seconds\n\n📄 [{}]({}) ({})".format(ms,file_name,g_drive_link,g_drive_size))
         except Exception as e:
             await mone.edit(f"exception occurred while uploading to gdrive `{e}`")
     else:
