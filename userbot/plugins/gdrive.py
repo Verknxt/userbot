@@ -31,6 +31,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
 @command(pattern="^.gdrive ?(.*)")
+class g_drive_size_class :
 async def _(event,self):
     if event.fwd_from:
         return
