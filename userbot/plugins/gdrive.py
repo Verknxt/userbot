@@ -2,7 +2,6 @@ import asyncio
 import os
 import time
 import math
-import self
 from datetime import datetime
 from telethon import events
 from uniborg.util import admin_cmd, progress
@@ -90,7 +89,8 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             g_drive_link = await upload_file(http, required_file_name, file_name, mime_type,mone,parent_id)
-            await mone.edit("uploaded successfully in `{}` seconds\n\n📄 [{}]({})".format(ms,file_name,g_drive_link))
+            file = self.drive_service.files().get(fileId=file_id, fields='size').execute()
+            await mone.edit("uploaded successfully in `{}` seconds\n\n📄 [{}]({}) ({})".format(ms,file_name,g_drive_link,file))
         except Exception as e:
             await mone.edit(f"exception occurred while uploading to gdrive `{e}`")
     else:
