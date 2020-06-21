@@ -31,7 +31,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
 @command(pattern="^.gdrive ?(.*)")
-async def _(event):
+async def _(event,self):
     if event.fwd_from:
         return
     mone = await event.reply("processing...")
