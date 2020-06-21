@@ -1,21 +1,23 @@
+import asyncio
 from telethon import events
-from datetime import datetime
+from telethon.tl.types import ChannelParticipantsAdmins
+from platform import uname
+from userbot import ALIVE_NAME
+from userbot.utils import admin_cmd
 
 
-@command(pattern="^.help")
-async def _(event):
-    if event.fwd_from:
-        return
-    await event.edit("⚒ (17) plugins available
-
-    🎨 fun (3) :   dumpster   spam   wtf
-
-    ⚙️ misc (5) :   aria   gdrive   purge   zombies   json 
-
-    💎 plugins (1) :   help
-
-    🧰 tools (6) :   alive   ping power_tools   exec   eval   instant_install_ext_module
-
-    🗂 utils (2) :   speedtest   translate
-
-📕 usage:  .help [plugin_name]")
+@command(outgoing=True, pattern="^.help$")
+async def helpcmd(help):
+    await help.edit("⚒ (18) plugins available\n"
+                     " \n"
+                     "    🎨 fun (3) :   dumpster   spam   wtf\n"
+                     " \n"
+                     "    ⚙️ misc (6) :   aria   gdrive   purge   zombies   json   afk\n"
+                     " \n"
+                     "    💎 plugins (1) :   help\n"
+                     " \n"
+                     "    🧰 tools (6) :   alive   ping power_tools   exec   eval   instant_install_ext_module\n"
+                     " \n"
+                     "    🗂 utils (2) :   speedtest   translate\n"
+                     " \n"
+                     "📕 usage:  .help [plugin_name]")
