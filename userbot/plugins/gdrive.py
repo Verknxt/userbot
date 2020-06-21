@@ -2,6 +2,7 @@ import asyncio
 import os
 import time
 import math
+import self
 from datetime import datetime
 from telethon import events
 from uniborg.util import admin_cmd, progress
