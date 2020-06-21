@@ -31,8 +31,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
 @command(pattern="^.gdrive ?(.*)")
-class g_drive_size_class :
-async def _(event,self):
+async def _(event):
     if event.fwd_from:
         return
     mone = await event.reply("processing...")
@@ -91,7 +90,7 @@ async def _(event,self):
             end = datetime.now()
             ms = (end - start).seconds
             g_drive_link = await upload_file(http, required_file_name, file_name, mime_type,mone,parent_id)
-            g_drive_size = self.drive_service.files().get(fileId=file_id, fields='size').execute()
+            g_drive_size = drive_service.files().get(fileId=file_id, fields='size').execute()
             await mone.edit("uploaded successfully in `{}` seconds\n\n📄 [{}]({}) ({})".format(ms,file_name,g_drive_link,g_drive_size))
         except Exception as e:
             await mone.edit(f"exception occurred while uploading to gdrive `{e}`")
