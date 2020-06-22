@@ -2,7 +2,9 @@ import asyncio
 import os
 import time
 import math
+from importlib import reload
 from datetime import datetime
+import imp
 from telethon import events
 from uniborg.util import admin_cmd, progress
 #
@@ -29,10 +31,11 @@ parent_id = Var.GDRIVE_FOLDER_ID
 G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
-@command(pattern="^.gdrive ?(.*)")
+@command(pattern="^.26gdrive ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
+    imp.reload(datetime)
     mone = await event.reply("processing...")
     if CLIENT_ID is None or CLIENT_SECRET is None:
         await mone.edit("this module requires credentials from https://da.gd/so63O aborting!")
@@ -57,7 +60,6 @@ async def _(event):
             required_file_name = downloaded_file_name
             await mone.edit("uploading to gdrive...")
     elif input_str:
-        start = datetime.now()
         input_str = input_str.strip()
         if os.path.exists(input_str):
             required_file_name = input_str
@@ -83,9 +85,7 @@ async def _(event):
         # Sometimes API fails to retrieve starting URI, we wrap it.
         try:
             g_drive_link = await upload_file(http, required_file_name, file_name, mime_type,mone,parent_id)
-            end = datetime.now()
-            ms = (end - start).seconds
-            await mone.edit("uploaded successfully in `{}` seconds\n\n📄 [{}]({})".format(ms,file_name,g_drive_link))
+            await mone.edit("uploaded successfully\n\n📄 [{}]({})".format(file_name,g_drive_link))
         except Exception as e:
             await mone.edit(f"exception occurred while uploading to gdrive `{e}`")
     else:

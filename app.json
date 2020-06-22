@@ -48,6 +48,11 @@
       "description": "",
       "value": "",
       "required": true
+     },
+    "BOTLOG_CHATID": {
+      "description": "",
+      "value": "",
+      "required": true
     },
     "G_DRIVE_CLIENT_ID": {
       "description": "",
