@@ -2,9 +2,7 @@ import asyncio
 import os
 import time
 import math
-from importlib import reload
 from datetime import datetime
-import imp
 from telethon import events
 from uniborg.util import admin_cmd, progress
 #
@@ -31,11 +29,10 @@ parent_id = Var.GDRIVE_FOLDER_ID
 G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
-@command(pattern="^.26gdrive ?(.*)")
+@command(pattern="^.gdrive ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
-    imp.reload(datetime)
     mone = await event.reply("processing...")
     if CLIENT_ID is None or CLIENT_SECRET is None:
         await mone.edit("this module requires credentials from https://da.gd/so63O aborting!")

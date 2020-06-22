@@ -44,60 +44,6 @@ async def upload(u_event):
     else:
         await u_event.edit("file could not be found!")
 
-
-def get_video_thumb(file, output=None, width=90):
-    """ Get video thumbnail """
-    metadata = extractMetadata(createParser(file))
-    popen = subprocess.Popen(
-        [
-            "ffmpeg",
-            "-i",
-            file,
-            "-ss",
-            str(
-                int((0, metadata.get("duration").seconds
-                     )[metadata.has("duration")] / 2)),
-            "-filter:v",
-            "scale={}:-1".format(width),
-            "-vframes",
-            "1",
-            output,
-        ],
-        shell=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.DEVNULL,
-    )
-    if not popen.returncode and os.path.lexists(file):
-        return output
-    return None
-
-
-def extract_w_h(file):
-    """ Get width and height of media """
-    command_to_run = [
-        "ffprobe",
-        "-v",
-        "quiet",
-        "-print_format",
-        "json",
-        "-show_format",
-        "-show_streams",
-        file,
-    ]
-    # https://stackoverflow.com/a/11236144/4723940
-    try:
-        t_response = subprocess.check_output(command_to_run,
-                                             stderr=subprocess.STDOUT)
-    except subprocess.CalledProcessError as exc:
-        LOGS.warning(exc)
-    else:
-        x_reponse = t_response.decode("UTF-8")
-        response_json = json.loads(x_reponse)
-        width = int(response_json["streams"][0]["width"])
-        height = int(response_json["streams"][0]["height"])
-        return width, height
-
-
 CMD_HELP.update({
     "download":
     "`.download` <link|filename> or reply to media\
