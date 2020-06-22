@@ -45,7 +45,6 @@ async def _(event):
     if not os.path.isdir(Var.TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Var.TEMP_DOWNLOAD_DIRECTORY)
     required_file_name = None
-    start = datetime.now()
     if event.reply_to_msg_id and not input_str:
         reply_message = await event.get_reply_message()
         try:
@@ -317,5 +316,5 @@ async def _(event):
     folder_link = "https://drive.google.com/folderview?id="+parent_id    
     await event.edit("here is your gdrive folder link:\n"+folder_link)
 
-time_lapsed = end_time - start_time
+time_lapsed = (end_time - start_time)
 time_convert(time_lapsed)
