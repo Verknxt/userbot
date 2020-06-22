@@ -28,11 +28,11 @@ cmd = f"aria2c \
 --enable-rpc \
 --rpc-listen-all=false \
 --rpc-listen-port 6800 \
---max-connection-per-server=10000 \
---rpc-max-request-size=9999M \
+--max-connection-per-server=100 \
+--rpc-max-request-size=99M \
 --seed-time=0.01 \
---max-upload-limit=10K \
---max-concurrent-downloads=10000 \
+--max-upload-limit=100 \
+--max-concurrent-downloads=100 \
 --min-split-size=100M \
 --follow-torrent=mem \
 --split=100 \
