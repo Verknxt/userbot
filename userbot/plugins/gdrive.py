@@ -56,6 +56,7 @@ async def _(event):
         else:
             start = datetime.now()
             required_file_name = downloaded_file_name
+            global start
             await mone.edit("uploading to gdrive...")
     elif input_str:
         input_str = input_str.strip()
