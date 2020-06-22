@@ -17,10 +17,6 @@ async def _(event):
     if event.fwd_from:
         return
     # await asyncio.sleep(2)
-    # await event.edit("Restarting [██░] ...\n`.ping` me or `.help` to check if I am online after a lil bit.")
-    # await asyncio.sleep(2)
-    # await event.edit("Restarting [███]...\n`.ping` me or `.help` to check if I am online after a lil bit.")
-    # await asyncio.sleep(2)
     await event.edit("restarting run `.ping` to check if i am online")
     await borg.disconnect()
     # https://archive.is/im3rt

@@ -1,8 +1,3 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.d (the "License");
-# you may not use this file except in compliance with the License.
-
 import os
 import aria2p
 import math
@@ -24,7 +19,6 @@ def subprocess_run(cmd):
     return talk
 
 
-# Get best trackers for improved download speeds, thanks K-E-N-W-A-Y.
 trackers_list = get(
     'https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt'
 ).text.replace('\n\n', ',')
@@ -34,14 +28,14 @@ cmd = f"aria2c \
 --enable-rpc \
 --rpc-listen-all=false \
 --rpc-listen-port 6800 \
---max-connection-per-server=10 \
---rpc-max-request-size=1024M \
+--max-connection-per-server=10000 \
+--rpc-max-request-size=9999M \
 --seed-time=0.01 \
---max-upload-limit=5K \
---max-concurrent-downloads=5 \
---min-split-size=10M \
+--max-upload-limit=10K \
+--max-concurrent-downloads=10000 \
+--min-split-size=100M \
 --follow-torrent=mem \
---split=10 \
+--split=100 \
 --bt-tracker={trackers} \
 --daemon=true \
 --allow-overwrite=true"
@@ -60,7 +54,6 @@ aria2.set_global_options({'dir': download_path})
 @register(outgoing=True, pattern="^.amag(?: |$)(.*)")
 async def magnet_download(event):
     magnet_uri = event.pattern_match.group(1)
-    # Add Magnet URI Into Queue
     try:
         download = aria2.add_magnet(magnet_uri)
     except Exception as e:
@@ -76,7 +69,7 @@ async def magnet_download(event):
 @register(outgoing=True, pattern="^.aurl(?: |$)(.*)")
 async def aurl_download(event):
     uri = [event.pattern_match.group(1)]
-    try:  # Add URL Into Queue
+    try: 
         download = aria2.add_uris(uri, options=None, position=None)
     except Exception as e:
         LOGS.info(str(e))
@@ -96,7 +89,7 @@ async def remove_all(event):
         aria2.purge_all()
     except Exception:
         pass
-    if not removed:  # If API returns False Try to Remove Through System Call.
+    if not removed: 
         subprocess_run("aria2p remove-all")
     await event.edit("`clearing on going downloads...`")
     await sleep(2.5)
@@ -106,7 +99,6 @@ async def remove_all(event):
 
 @register(outgoing=True, pattern="^.apause(?: |$)(.*)")
 async def pause_all(event):
-    # Pause ALL Currently Running Downloads.
     await event.edit("`pausing on going downloads...`")
     aria2.pause_all(force=True)
     await sleep(2.5)

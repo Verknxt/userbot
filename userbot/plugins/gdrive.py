@@ -16,14 +16,10 @@ from mimetypes import guess_type
 import httplib2
 
 
-# Path to token json file, it should be in same directory as script
 G_DRIVE_TOKEN_FILE = Var.TEMP_DOWNLOAD_DIRECTORY + "/auth_token.txt"
-# Copy your credentials from the APIs Console
 CLIENT_ID = Var.G_DRIVE_CLIENT_ID
 CLIENT_SECRET = Var.G_DRIVE_CLIENT_SECRET
-# Check https://developers.google.com/drive/scopes for all available scopes
 OAUTH_SCOPE = "https://www.googleapis.com/auth/drive.file"
-# Redirect URI for installed apps, can be left as is
 REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob"
 parent_id = Var.GDRIVE_FOLDER_ID
 G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
