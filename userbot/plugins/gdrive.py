@@ -83,8 +83,7 @@ async def _(event):
         # required_file_name will have the full path
         # Sometimes API fails to retrieve starting URI, we wrap it.
         try:
-            end = datetime.now()
-            ms = (end - start).seconds
+            ms = (start).seconds
             g_drive_link = await upload_file(http, required_file_name, file_name, mime_type,mone,parent_id)
             await mone.edit("uploaded successfully in `{}` seconds\n\n📄 [{}]({})".format(ms,file_name,g_drive_link))
         except Exception as e:
