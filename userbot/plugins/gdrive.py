@@ -91,8 +91,6 @@ async def _(event):
             g_drive_link = await upload_file(http, required_file_name, file_name, mime_type,mone,parent_id)
             end_time = time.time()
             await mone.edit("uploaded successfully in `{0}:{1}:{2}` seconds\n\n📄 [{}]({})".format(int(hours),int(mins),sec,file_name,g_drive_link))
-        time_lapsed = end_time - start_time
-        time_convert(time_lapsed)
         except Exception as e:
             await mone.edit(f"exception occurred while uploading to gdrive `{e}`")
     else:
@@ -319,3 +317,6 @@ async def _(event):
         return
     folder_link = "https://drive.google.com/folderview?id="+parent_id    
     await event.edit("here is your gdrive folder link:\n"+folder_link)
+
+time_lapsed = end_time - start_time
+time_convert(time_lapsed)
