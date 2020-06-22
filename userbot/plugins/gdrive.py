@@ -28,6 +28,11 @@ REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob"
 parent_id = Var.GDRIVE_FOLDER_ID
 G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
+def time_convert(sec):
+  minutes = sec // 60
+  seconds = sec % 60
+  hours = mins // 60
+  minutes = mins % 60
 
 @command(pattern="^.gdrive ?(.*)")
 async def _(event):
@@ -55,9 +60,8 @@ async def _(event):
             await mone.edit(str(e))
             return False
         else:
-            start = datetime.now()
             required_file_name = downloaded_file_name
-            c_time = time.time()
+            start_time = time.time()
             await mone.edit("uploading to gdrive...")
     elif input_str:
         input_str = input_str.strip()
@@ -84,10 +88,11 @@ async def _(event):
         # required_file_name will have the full path
         # Sometimes API fails to retrieve starting URI, we wrap it.
         try:
-            end = datetime.now()
-            ms = (end - start).seconds
             g_drive_link = await upload_file(http, required_file_name, file_name, mime_type,mone,parent_id)
-            await mone.edit("uploaded successfully in `{}` seconds\n\n📄 [{}]({})".format(ms,file_name,g_drive_link))
+            end_time = time.time()
+            await mone.edit("uploaded successfully in `{0}:{1}:{2}` seconds\n\n📄 [{}]({})".format(int(hours),int(mins),sec,file_name,g_drive_link))
+        time_lapsed = end_time - start_time
+        time_convert(time_lapsed)
         except Exception as e:
             await mone.edit(f"exception occurred while uploading to gdrive `{e}`")
     else:
