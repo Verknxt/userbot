@@ -15,9 +15,6 @@ from oauth2client import file, client, tools
 from mimetypes import guess_type
 import httplib2
 
-time_lapsed = end_time - start_time
-time_convert(time_lapsed)
-
 # Path to token json file, it should be in same directory as script
 G_DRIVE_TOKEN_FILE = Var.TEMP_DOWNLOAD_DIRECTORY + "/auth_token.txt"
 # Copy your credentials from the APIs Console
@@ -320,4 +317,5 @@ async def _(event):
     folder_link = "https://drive.google.com/folderview?id="+parent_id    
     await event.edit("here is your gdrive folder link:\n"+folder_link)
 
-
+time_lapsed = end_time - start_time
+time_convert(time_lapsed)
