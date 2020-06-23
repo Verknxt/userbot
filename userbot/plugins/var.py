@@ -74,8 +74,6 @@ async def _(event):
                     display_message = current_message
             except Exception as e:
                 logger.info(str(e))
-        end = datetime.now()
-        ms = (end - start).seconds
         if downloader.isSuccessful():
             await mone.edit("downloaded to `{}`".format(downloaded_file_name))
         else:
