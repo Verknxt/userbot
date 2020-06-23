@@ -4,7 +4,7 @@ from datetime import datetime
 
 @command(pattern="^.ping")
 async def _(event):
-         if event.fwd_from:
+    if event.fwd_from:
         return
     start = datetime.now()
     await event.edit("pong!")
