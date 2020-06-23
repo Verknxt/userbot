@@ -15,7 +15,7 @@ if ENV:
         # Send .get_id in any channel to fill this value. ReQuired for @Manuel15 inspiration to work!
         PRIVATE_CHANNEL_BOT_API_ID = int(os.environ.get("PRIVATE_CHANNEL_BOT_API_ID", -100123456789))
         # This is required for the plugins involving the file system.
-        TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
+        TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./userbot/downloads/")
         # This is required for the speech to text module. Get your USERNAME from https://console.bluemix.net/docs/services/speech-to-text/getting-started.html
         IBM_WATSON_CRED_URL = os.environ.get("IBM_WATSON_CRED_URL", None)
         IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
@@ -96,8 +96,8 @@ if ENV:
         GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
         AUTH_TOKEN_DATA = os.environ.get("AUTH_TOKEN_DATA", None)
         if AUTH_TOKEN_DATA != None:
-            os.makedirs(TMP_DOWNLOAD_DIRECTORY)
-            t_file = open(TMP_DOWNLOAD_DIRECTORY+"auth_token.txt","w")
+            os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
+            t_file = open(TEMP_DOWNLOAD_DIRECTORY+"auth_token.txt","w")
             t_file.write(AUTH_TOKEN_DATA)
             t_file.close()
         YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
