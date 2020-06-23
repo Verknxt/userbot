@@ -17,7 +17,7 @@ from userbot import LOGS, CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.utils import register
 from userbot.utils import admin_cmd, humanbytes, progress, time_formatter
 from userbot.uniborgConfig import Config
-thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
+thumb_image_path = Config.TEMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 import io
 from userbot.utils import admin_cmd, progress
 
@@ -27,15 +27,15 @@ async def _(event):
         return
     mone = await event.reply("processing...")
     input_str = event.pattern_match.group(1)
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(Config.TEMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(Config.TEMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
         try:
             c_time = time.time()
             downloaded_file_name = await event.client.download_media(
                 reply_message,
-                Config.TMP_DOWNLOAD_DIRECTORY
+                Config.TEMP_DOWNLOAD_DIRECTORY
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))
@@ -44,7 +44,7 @@ async def _(event):
     elif input_str:
         url = input_str
         file_name = os.path.basename(url)
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        to_download_directory = Config.TEMP_DOWNLOAD_DIRECTORY
         if "|" in input_str:
             url, file_name = input_str.split("|")
         url = url.strip()
