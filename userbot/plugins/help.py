@@ -52,7 +52,7 @@ async def helpcmdaria(helparia):
                      "    📚 info:  `with this command you can clean all running downloads`\n"
                      " \n"
                      "    🤖 cmd(`4`):  `.apause`\n"
-                     "    📚 info:  `with this command you can stop all running downloads`\n"
+                     "    📚 info:  `with this command you can pause all running downloads`\n"
                      " \n"
                      "    🤖 cmd(`5`):  `.aresume`\n"
                      "    📚 info:  `with this command you can start all running downloads`\n")
