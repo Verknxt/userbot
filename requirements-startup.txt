@@ -44,7 +44,7 @@ qrcode
 regex
 requests>=2.18.4
 search-engine-parser>=0.4.2
-selenium
+selenium>=3.141.0
 setuptools>=40.3.0
 speedtest-cli>=2.0.2
 sqlalchemy>=1.2

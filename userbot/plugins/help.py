@@ -9,11 +9,11 @@ from userbot.utils import admin_cmd
 @command(outgoing=True, pattern="^.help$")
 async def helpcmd(help):
      if not help.text[0].isalpha() and help.text[0] not in ("/", "#", "@", "!"):
-        await help.edit("⚒ (`17`) plugins available\n"
+        await help.edit("⚒ (`16`) plugins available\n"
                      " \n"
                      "    🎨 fun (`2`) :   `spam`   `wtf`\n"
                      " \n"
-                     "    ⚙️ misc (`6`) :   `aria`   `gdrive`   `purge`   `zombies`   `json`   `afk`\n"
+                     "    ⚙️ misc (`6`) :   `aria`   `gdrive`   `purge`   `zombies`   `afk`\n"
                      " \n"
                      "    💎 plugins (`1`) :   `help`\n"
                      " \n"
@@ -120,17 +120,6 @@ async def helpcmdzombies(helpzombies):
                      "📘 about:  `none`\n"
                      " \n"
                      "    🤖 cmd(`1`):  `.zombies`\n"
-                     "    📚 info:  `none`\n")
-
-@command(outgoing=True, pattern="^.help json$")
-async def helpcmdjson(helpjson):
-     if not helpjson.text[0].isalpha() and helpjson.text[0] not in ("/", "#", "@", "!"):
-        await helpjson.edit("⚔️ (`1`) command available\n"
-                     " \n"
-                     "🔧 plugin:  `json`\n"
-                     "📘 about:  `none`\n"
-                     " \n"
-                     "    🤖 cmd(`1`):  `.json`\n"
                      "    📚 info:  `none`\n")
 
 @command(outgoing=True, pattern="^.help help$")
