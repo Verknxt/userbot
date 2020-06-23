@@ -134,7 +134,7 @@ async def gsearch(http,query,filename):
     return msg        
 
 
-@command(pattern="^.gdrivedir ?(.*)")
+#@command(pattern="^.gdrivedir ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -297,11 +297,3 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
     file = drive_service.files().get(fileId=file_id).execute()
     download_url = file.get("webContentLink")
     return download_url
-
-
-@command(pattern="^.gfolder ?(.*)")
-async def _(event):
-    if event.fwd_from:
-        return
-    folder_link = "https://drive.google.com/folderview?id="+parent_id    
-    await event.edit("here is your gdrive folder link:\n"+folder_link)
