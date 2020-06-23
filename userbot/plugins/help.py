@@ -200,5 +200,5 @@ async def helpcmdleave(helpleave):
                      "🔧 plugin:  `leave`\n"
                      "📘 about:  `none`\n"
                      " \n"
-                     "    🤖 cmd(`1`):  `.spotify`\n"
-                     "    📚 info:  `With this command you can easily leave a group`\n")
+                     "    🤖 cmd(`1`):  `.leave`\n"
+                     "    📚 info:  `with this command you can easily leave a group`\n")
