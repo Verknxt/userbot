@@ -11,6 +11,7 @@ from userbot.events import register
 
 @register(outgoing=True, pattern="^.speedtest$")
 async def speedtest(spd):
+     if not spd.text[0].isalpha() and spd.text[0] not in ("/", "#", "@", "!"):
     """ For .speedtest command, use SpeedTest to check server speeds. """
     await spd.edit("running speedtest...")
     test = Speedtest()

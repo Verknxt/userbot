@@ -12,6 +12,7 @@ from userbot.utils import admin_cmd
 
 @borg.on(admin_cmd("(.*)"))
 async def _(event):
+     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
     if event.fwd_from:
         return
     animation_interval = 0.3

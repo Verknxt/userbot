@@ -8,6 +8,7 @@ from userbot.utils import admin_cmd
 
 @command(outgoing=True, pattern="^.help$")
 async def helpcmd(help):
+     if not help.text[0].isalpha() and help.text[0] not in ("/", "#", "@", "!"):
     await help.edit("⚒ (`17`) plugins available\n"
                      " \n"
                      "    🎨 fun (`2`) :   `spam`   `wtf`\n"
@@ -24,6 +25,7 @@ async def helpcmd(help):
 
 @command(outgoing=True, pattern="^.help spam$")
 async def helpcmdspam(helpspam):
+     if not helpspam.text[0].isalpha() and helpspam.text[0] not in ("/", "#", "@", "!"):
     await helpspam.edit("⚔️ (`1`) command available\n"
                      " \n"
                      "🔧 plugin:  `spam`\n"
@@ -34,6 +36,7 @@ async def helpcmdspam(helpspam):
 
 @command(outgoing=True, pattern="^.help wtf$")
 async def helpcmdwtf(helpwtf):
+     if not helpwtf.text[0].isalpha() and helpwtf.text[0] not in ("/", "#", "@", "!"):
     await helpwtf.edit("⚔️ (`1`) command available\n"
                      " \n"
                      "🔧 plugin:  `wtf`\n"
@@ -44,6 +47,7 @@ async def helpcmdwtf(helpwtf):
 
 @command(outgoing=True, pattern="^.help aria$")
 async def helpcmdaria(helparia):
+     if not helparia.text[0].isalpha() and helparia.text[0] not in ("/", "#", "@", "!"):
     await helparia.edit("⚔️ (`5`) commands available\n"
                      " \n"
                      "🔧 plugin:  `aria`\n"
@@ -66,6 +70,7 @@ async def helpcmdaria(helparia):
 
 @command(outgoing=True, pattern="^.help gdrive$")
 async def helpcmdgdrive(helpgdrive):
+     if not helpgdrive.text[0].isalpha() and helpgdrive.text[0] not in ("/", "#", "@", "!"):
     await helpgdrive.edit("⚔️ (`4`) commands available\n"
                      " \n"
                      "🔧 plugin:  `gdrive`\n"
@@ -85,6 +90,7 @@ async def helpcmdgdrive(helpgdrive):
 
 @command(outgoing=True, pattern="^.help purge$")
 async def helpcmdpurge(helppurge):
+     if not helppurge.text[0].isalpha() and helppurge.text[0] not in ("/", "#", "@", "!"):
     await helppurge.edit("⚔️ (`5`) commands available\n"
                      " \n"
                      "🔧 plugin:  `purge`\n"
@@ -107,6 +113,7 @@ async def helpcmdpurge(helppurge):
 
 @command(outgoing=True, pattern="^.help zombies$")
 async def helpcmdzombies(helpzombies):
+     if not helpzombies.text[0].isalpha() and helpzombies.text[0] not in ("/", "#", "@", "!"):
     await helpzombies.edit("⚔️ (`1`) command available\n"
                      " \n"
                      "🔧 plugin:  `zombies`\n"
@@ -117,6 +124,7 @@ async def helpcmdzombies(helpzombies):
 
 @command(outgoing=True, pattern="^.help json$")
 async def helpcmdjson(helpjson):
+     if not helpjson.text[0].isalpha() and helpjson.text[0] not in ("/", "#", "@", "!"):
     await helpjson.edit("⚔️ (`1`) command available\n"
                      " \n"
                      "🔧 plugin:  `json`\n"
@@ -127,6 +135,7 @@ async def helpcmdjson(helpjson):
 
 @command(outgoing=True, pattern="^.help help$")
 async def helpcmdhelp(helphelp):
+     if not helphelp.text[0].isalpha() and helphelp.text[0] not in ("/", "#", "@", "!"):
     await helphelp.edit("⚔️ (`1`) command available\n"
                      " \n"
                      "🔧 plugin:  `help`\n"
@@ -137,6 +146,7 @@ async def helpcmdhelp(helphelp):
 
 @command(outgoing=True, pattern="^.help alive$")
 async def helpcmdalive(helpalive):
+     if not helpalive.text[0].isalpha() and helpalive.text[0] not in ("/", "#", "@", "!"):
     await helpalive.edit("⚔️ (`1`) command available\n"
                      " \n"
                      "🔧 plugin:  `alive`\n"
@@ -147,6 +157,7 @@ async def helpcmdalive(helpalive):
 
 @command(outgoing=True, pattern="^.help ping$")
 async def helpcmdping(helpping):
+     if not helpping.text[0].isalpha() and helpping.text[0] not in ("/", "#", "@", "!"):
     await helpping.edit("⚔️ (`1`) command available\n"
                      " \n"
                      "🔧 plugin:  `ping`\n"
@@ -157,6 +168,7 @@ async def helpcmdping(helpping):
 
 @command(outgoing=True, pattern="^.help power_tools$")
 async def helpcmdpower_tools(helppower_tools):
+     if not helppower_tools.text[0].isalpha() and helppower_tools.text[0] not in ("/", "#", "@", "!"):
     await helppower_tools.edit("⚔️ (`2`) commands available\n"
                      " \n"
                      "🔧 plugin:  `power_tools`\n"
@@ -170,6 +182,7 @@ async def helpcmdpower_tools(helppower_tools):
 
 @command(outgoing=True, pattern="^.help exec$")
 async def helpcmdexec(helpexec):
+     if not helpexec.text[0].isalpha() and helpexec.text[0] not in ("/", "#", "@", "!"):
     await helpexec.edit("⚔️ (`1`) command available\n"
                      " \n"
                      "🔧 plugin:  `exec`\n"
@@ -180,6 +193,7 @@ async def helpcmdexec(helpexec):
 
 @command(outgoing=True, pattern="^.help eval$")
 async def helpcmdeval(helpeval):
+     if not helpeval.text[0].isalpha() and helpeval.text[0] not in ("/", "#", "@", "!"):
     await helpeval.edit("⚔️ (`1`) command available\n"
                      " \n"
                      "🔧 plugin:  `eval`\n"
@@ -190,6 +204,7 @@ async def helpcmdeval(helpeval):
 
 @command(outgoing=True, pattern="^.help instant_install_ext_module$")
 async def helpcmdinstant_install_ext_module(helpinstant_install_ext_module):
+     if not helpinstant_install_ext_module.text[0].isalpha() and helpinstant_install_ext_module.text[0] not in ("/", "#", "@", "!"):
     await helpinstant_install_ext_module.edit("⚔️ (`1`) command available\n"
                      " \n"
                      "🔧 plugin:  `instant_install_ext_module`\n"
@@ -200,6 +215,7 @@ async def helpcmdinstant_install_ext_module(helpinstant_install_ext_module):
 
 @command(outgoing=True, pattern="^.help speedtest$")
 async def helpcmdspeedtest(helpspeedtest):
+     if not helpspeedtest.text[0].isalpha() and helpspeedtest.text[0] not in ("/", "#", "@", "!"):
     await helpspeedtest.edit("⚔️ (`1`) command available\n"
                      " \n"
                      "🔧 plugin:  `speedtest`\n"
@@ -210,6 +226,7 @@ async def helpcmdspeedtest(helpspeedtest):
 
 @command(outgoing=True, pattern="^.help translate$")
 async def helpcmdtranslate(helptranslate):
+     if not helptranslate.text[0].isalpha() and helptranslate.text[0] not in ("/", "#", "@", "!"):
     await helptranslate.edit("⚔️ (`1`) command available\n"
                      " \n"
                      "🔧 plugin:  `translate`\n"

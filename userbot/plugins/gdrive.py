@@ -27,6 +27,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 @command(pattern="^.gdrive ?(.*)")
 async def _(event):
+     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
     if event.fwd_from:
         return
     mone = await event.reply("processing...")
@@ -86,6 +87,7 @@ async def _(event):
 
 @command(pattern="^.drivesch ?(.*)")
 async def sch(event):
+     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
     if event.fwd_from:
         return
     if CLIENT_ID is None or CLIENT_SECRET is None:
@@ -136,6 +138,7 @@ async def gsearch(http,query,filename):
 
 @command(pattern="^.gdrivedir ?(.*)")
 async def _(event):
+     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
     if event.fwd_from:
         return
     if CLIENT_ID is None or CLIENT_SECRET is None:
@@ -301,6 +304,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
 
 @command(pattern="^.gfolder ?(.*)")
 async def _(event):
+     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
     if event.fwd_from:
         return
     folder_link = "https://drive.google.com/folderview?id="+parent_id    
