@@ -4,7 +4,8 @@ from datetime import datetime
 
 @command(pattern="^.ping")
 async def _(event):
-    if event.fwd_from:
+     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+         if event.fwd_from:
         return
     start = datetime.now()
     await event.edit("pong!")
