@@ -3,8 +3,7 @@ from datetime import datetime
 
 
 @command(pattern="^.ping")
-async def pingcmd(cmdping):
-     if not cmdping.text[0].isalpha() and cmdping.text[0] not in ("/", "#", "@", "!"):
+async def _(event):
     if event.fwd_from:
         return
     start = datetime.now()

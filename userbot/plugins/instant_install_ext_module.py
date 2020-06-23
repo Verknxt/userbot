@@ -13,8 +13,7 @@ import os
 import userbot.utils
 
 @command(pattern="^.extdl", outgoing=True)
-async def cmdinstall(insltallcmd):
-     if not installcmd.text[0].isalpha() and installcmd.text[0] not in ("/", "#", "@", "!"):
+async def install(event):
     if event.fwd_from:
         return
     chat = Var.PLUGIN_CHANNEL

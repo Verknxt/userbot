@@ -9,8 +9,7 @@ from userbot.utils import admin_cmd
 
 
 @borg.on(admin_cmd("tr ?(.*)"))
-async def trcmd(cmdtr):
-     if not cmdtr.text[0].isalpha() and cmdtr.text[0] not in ("/", "#", "@", "!"):
+async def _(event):
     if event.fwd_from:
         return
     if "trim" in event.raw_text:

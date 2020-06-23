@@ -26,8 +26,7 @@ G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
 @command(pattern="^.gdrive ?(.*)")
-async def fkkf(fiift):
-     if not fiift.text[0].isalpha() and fiift.text[0] not in ("/", "#", "@", "!"):
+async def _(event):
     if event.fwd_from:
         return
     mone = await event.reply("processing...")
@@ -86,8 +85,7 @@ async def fkkf(fiift):
         await mone.edit("file not found in local server give me a file path")
 
 @command(pattern="^.drivesch ?(.*)")
-async def sch(strrr):
-     if not strrr.text[0].isalpha() and strrr.text[0] not in ("/", "#", "@", "!"):
+async def sch(event):
     if event.fwd_from:
         return
     if CLIENT_ID is None or CLIENT_SECRET is None:
@@ -137,8 +135,7 @@ async def gsearch(http,query,filename):
 
 
 @command(pattern="^.gdrivedir ?(.*)")
-async def fjrikd(fkrois):
-     if not fkrois.text[0].isalpha() and fkrois.text[0] not in ("/", "#", "@", "!"):
+async def _(event):
     if event.fwd_from:
         return
     if CLIENT_ID is None or CLIENT_SECRET is None:
@@ -303,8 +300,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
 
 
 @command(pattern="^.gfolder ?(.*)")
-async def dodod(dododo):
-     if not dododo.text[0].isalpha() and dododo.text[0] not in ("/", "#", "@", "!"):
+async def _(event):
     if event.fwd_from:
         return
     folder_link = "https://drive.google.com/folderview?id="+parent_id    

@@ -11,7 +11,6 @@ from userbot.utils import register, errors_handler
 @register(outgoing=True, pattern="^.purge$")
 @errors_handler
 async def fastpurger(purg):
-     if not purg.text[0].isalpha() and purg.text[0] not in ("/", "#", "@", "!"):
     """ For .purge command, purge all messages starting from the reply. """
     chat = await purg.get_input_chat()
     msgs = []
@@ -44,7 +43,6 @@ async def fastpurger(purg):
 @register(outgoing=True, pattern="^.purgeme")
 @errors_handler
 async def purgeme(delme):
-     if not delme.text[0].isalpha() and delme.text[0] not in ("/", "#", "@", "!"):
     """ For .purgeme, delete x count of your latest message."""
     message = delme.text
     count = int(message[9:])
@@ -73,7 +71,6 @@ async def purgeme(delme):
 @register(outgoing=True, pattern="^.del$")
 @errors_handler
 async def delete_it(delme):
-     if not delme.text[0].isalpha() and delme.text[0] not in ("/", "#", "@", "!"):
     """ For .del command, delete the replied message. """
     msg_src = await delme.get_reply_message()
     if delme.reply_to_msg_id:
@@ -92,7 +89,6 @@ async def delete_it(delme):
 @register(outgoing=True, pattern="^.edit")
 @errors_handler
 async def editer(edit):
-     if not edit.text[0].isalpha() and edit.text[0] not in ("/", "#", "@", "!"):
     """ For .editme command, edit your last message. """
     message = edit.text
     chat = await edit.get_input_chat()
@@ -113,7 +109,6 @@ async def editer(edit):
 @register(outgoing=True, pattern="^.sd")
 @errors_handler
 async def selfdestruct(destroy):
-     if not destroy.text[0].isalpha() and destroy.text[0] not in ("/", "#", "@", "!"):
     """ For .sd command, make seflf-destructable messages. """
     message = destroy.text
     counter = int(message[4:6])

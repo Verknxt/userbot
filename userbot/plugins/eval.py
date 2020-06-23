@@ -9,8 +9,7 @@ from uniborg.util import admin_cmd
 
 @borg.on(admin_cmd("eval", allow_sudo=True))
 @borg.on(admin_cmd("eval"))
-async def cmdeval(evalcmd):
-     if not evalcmd.text[0].isalpha() and evalcmd.text[0] not in ("/", "#", "@", "!"):
+async def _(event):
     if event.fwd_from:
         return
     cmd = event.text.split(" ", maxsplit=1)[1]
