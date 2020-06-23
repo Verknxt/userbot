@@ -12,4 +12,5 @@ from platform import python_version, uname
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
     await alive.edit("i'm alive!\n\n"
-                     f"telethon version: `{version.__version__}`\npython version: `{version.__version__}`")
+                                f"telethon version: `{version.__version__}`"
+                                f"\npython version: `{python_version()}`")
