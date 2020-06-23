@@ -1,7 +1,3 @@
-"""Restart or Terminate the bot from any chat
-Available Commands:
-.restart
-.shutdown"""
 from telethon import events
 import asyncio
 import os

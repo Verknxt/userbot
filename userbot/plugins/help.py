@@ -221,5 +221,5 @@ async def helpcmdtranslate(helptranslate):
                      "🔧 plugin:  `translate`\n"
                      "📘 about:  `none`\n"
                      " \n"
-                     "    🤖 cmd(`1`):  `.tr`\n"
+                     "    🤖 cmd(`1`):  `.translate`\n"
                      "    📚 info:  `none`\n")

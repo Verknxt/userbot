@@ -1,6 +1,3 @@
-""" Userbot module containing commands related to the \
-    Information Superhighway (yes, Internet). """
-
 from datetime import datetime
 
 from speedtest import Speedtest
@@ -38,10 +35,3 @@ def speed_convert(size):
         size /= power
         zero += 1
     return f"{round(size, 2)} {units[zero]}"
-
-CMD_HELP.update(
-    {"ping": "`.ping`\
-    \nUsage: Shows how long it takes to ping your bot.\
-    \n\n`.speed`\
-    \nUsage: Does a speedtest and shows the results."
-})

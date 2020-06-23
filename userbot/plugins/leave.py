@@ -1,6 +1,3 @@
-"""
-.leave
-"""
 from telethon.tl.functions.channels import LeaveChannelRequest
 from userbot.utils import admin_cmd
 import time

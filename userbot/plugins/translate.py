@@ -1,14 +1,9 @@
-""" Google Translate
-Available Commands:
-.tr LanguageCode as reply to a message
-.tr LangaugeCode | text to translate"""
-
 import emoji
 from googletrans import Translator
 from userbot.utils import admin_cmd
 
 
-@borg.on(admin_cmd("tr ?(.*)"))
+@borg.on(admin_cmd("translate ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
