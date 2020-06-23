@@ -7,8 +7,8 @@ import io
 
 
 @command(pattern="^.exec")
-async def _(event):
-     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+async def execcmd(cmdexec):
+     if not cmdexec.text[0].isalpha() and cmdexec.text[0] not in ("/", "#", "@", "!"):
     if event.fwd_from:
         return
     cmd = event.text.split(" ", maxsplit=1)[1]

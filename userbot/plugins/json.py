@@ -6,8 +6,8 @@ from userbot.utils import admin_cmd
 
 
 @borg.on(admin_cmd("json"))
-async def _(event):
-     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+async def jsoncmd(cmdjson):
+     if not cmdjson.text[0].isalpha() and cmdjson.text[0] not in ("/", "#", "@", "!"):
     if event.fwd_from:
         return
     the_real_message = None

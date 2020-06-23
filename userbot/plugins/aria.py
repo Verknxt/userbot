@@ -52,8 +52,8 @@ aria2.set_global_options({'dir': download_path})
 
 
 @register(outgoing=True, pattern="^.amag(?: |$)(.*)")
-async def magnet_download(event):
-     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+async def magnet_download(sss):
+     if not sss.text[0].isalpha() and sss.text[0] not in ("/", "#", "@", "!"):
     magnet_uri = event.pattern_match.group(1)
     try:
         download = aria2.add_magnet(magnet_uri)
@@ -68,8 +68,8 @@ async def magnet_download(event):
 
 
 @register(outgoing=True, pattern="^.aurl(?: |$)(.*)")
-async def aurl_download(event):
-     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+async def aurl_download(fff):
+     if not fff.text[0].isalpha() and fff.text[0] not in ("/", "#", "@", "!"):
     uri = [event.pattern_match.group(1)]
     try: 
         download = aria2.add_uris(uri, options=None, position=None)
@@ -85,8 +85,8 @@ async def aurl_download(event):
 
 
 @register(outgoing=True, pattern="^.aclear(?: |$)(.*)")
-async def remove_all(event):
-     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+async def remove_all(ggg):
+     if not ggg.text[0].isalpha() and ggg .text[0] not in ("/", "#", "@", "!"):
     try:
         removed = aria2.remove_all(force=True)
         aria2.purge_all()
@@ -101,8 +101,8 @@ async def remove_all(event):
 
 
 @register(outgoing=True, pattern="^.apause(?: |$)(.*)")
-async def pause_all(event):
-     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+async def pause_all(ooo):
+     if not ooo.text[0].isalpha() and ooo.text[0] not in ("/", "#", "@", "!"):
     await event.edit("`pausing on going downloads...`")
     aria2.pause_all(force=True)
     await sleep(2.5)
@@ -111,8 +111,8 @@ async def pause_all(event):
 
 
 @register(outgoing=True, pattern="^.aresume(?: |$)(.*)")
-async def resume_all(event):
-     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+async def resume_all(ccc):
+     if not ccc.text[0].isalpha() and ccc.text[0] not in ("/", "#", "@", "!"):
     await event.edit("`resuming downloads...`")
     aria2.resume_all()
     await sleep(1)

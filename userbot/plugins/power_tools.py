@@ -10,8 +10,8 @@ from userbot.utils import admin_cmd
 
 
 @borg.on(admin_cmd("restart"))
-async def _(event):
-     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+async def cmdrestart(restartcmd):
+     if not restartcmd.text[0].isalpha() and restartcmd.text[0] not in ("/", "#", "@", "!"):
     if event.fwd_from:
         return
     # await asyncio.sleep(2)
@@ -24,7 +24,8 @@ async def _(event):
 
 
 @borg.on(admin_cmd("shutdown"))
-async def _(event):
+async def cmdshutdown(shutdowncmd):
+     if not shutdowncmd.text[0].isalpha() and shutdowncmd.text[0] not in ("/", "#", "@", "!"):
     if event.fwd_from:
         return
     await event.edit("turning off manually turn me on later!")
