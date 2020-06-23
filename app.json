@@ -17,11 +17,6 @@
       "description": "setting this to ANYTHING will enable heroku.",
       "value": "ANYTHING"
     },
-    "TEMP_DOWNLOAD_DIRECTORY": {
-      "description": "where the downloaded files will go.",
-      "value": "./userbot/downloads/",
-      "required": false
-    },
     "APP_ID": {
       "description": "get this value from my.telegram.org! please do not steal",
       "value": ""
