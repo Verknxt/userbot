@@ -2,14 +2,12 @@
 import asyncio
 from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from userbot import ALIVE_NAME, CMD_HELP, IMG
+from userbot import ALIVE_NAME, CMD_HELP
 from userbot.utils import admin_cmd
 from telethon import version
 from platform import python_version, uname
 
-
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "``"
-IMG = "str(IMG)"
+IMG = "https://i.postimg.cc/CKRjRwZ1/photo-2020-06-13-16-51-18.jpg"
 alive_text = "i'm alive!\n\n"
 alive_text += f"telethon version: `{version.__version__}`\n"
 alive_text += f"python version: `{python_version()}`"
