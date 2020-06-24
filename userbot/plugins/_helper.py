@@ -27,7 +27,6 @@ async def cmd_list(event):
                 await event.edit(string)
             else:
                 await event.edit(input_str + " is not a valid plugin!")
-            )
             await results[0].click(
                 event.chat_id,
                 reply_to=event.reply_to_msg_id,
