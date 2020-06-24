@@ -84,7 +84,7 @@ async def _(event):
     else:
         await mone.edit("file not found in local server give me a file path")
 
-@command(pattern="^.drivesch ?(.*)")
+#@command(pattern="^.drivesch ?(.*)")
 async def sch(event):
     if event.fwd_from:
         return
