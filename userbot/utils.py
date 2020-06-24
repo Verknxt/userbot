@@ -83,7 +83,11 @@ def load_module(shortname):
         import sys
         import importlib
         from pathlib import Path
-        path = Path(f"userbot/plugins/*")
+        path = Path(f"userbot/plugins/{shortname}.py
+                                userbot/plugins/utils/{shortname}.py
+                                userbot/plugins/fun/{shortname}.py
+                                userbot/plugins/misc/{shortname}.py
+                                userbot/plugins/tools/{shortname}.py")
         name = "userbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
@@ -94,7 +98,11 @@ def load_module(shortname):
         import sys
         import importlib
         from pathlib import Path
-        path = Path(f"userbot/plugins/*")
+        path = Path(f"userbot/plugins/{shortname}.py
+                                userbot/plugins/utils/{shortname}.py
+                                userbot/plugins/fun/{shortname}.py
+                                userbot/plugins/misc/{shortname}.py
+                                userbot/plugins/tools/{shortname}.py")
         name = "userbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
