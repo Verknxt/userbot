@@ -27,9 +27,6 @@ async def cmd_list(event):
                 await event.edit(string)
             else:
                 await event.edit(input_str + " is not a valid plugin!")
-        else:
-            results = await bot.inline_query(  # pylint:disable=E0602
-                tgbotusername
             )
             await results[0].click(
                 event.chat_id,
