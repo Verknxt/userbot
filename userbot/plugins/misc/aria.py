@@ -91,27 +91,27 @@ async def remove_all(event):
         pass
     if not removed: 
         subprocess_run("aria2p remove-all")
-    await event.edit("`clearing on going downloads...`")
+    await event.edit("clearing on going downloads...")
     await sleep(2.5)
-    await event.edit("`successfully cleared all on going downloads.`")
+    await event.edit("successfully cleared all on going downloads.")
     await sleep(2.5)
 
 
 @register(outgoing=True, pattern="^.apause(?: |$)(.*)")
 async def pause_all(event):
-    await event.edit("`pausing on going downloads...`")
+    await event.edit("pausing on going downloads...")
     aria2.pause_all(force=True)
     await sleep(2.5)
-    await event.edit("`successfully paused on going downloads.`")
+    await event.edit("successfully paused on going downloads.")
     await sleep(2.5)
 
 
 @register(outgoing=True, pattern="^.aresume(?: |$)(.*)")
 async def resume_all(event):
-    await event.edit("`resuming downloads...`")
+    await event.edit("resuming downloads...")
     aria2.resume_all()
     await sleep(1)
-    await event.edit("`downloads resumed.`")
+    await event.edit("downloads resumed.")
     await sleep(2.5)
     await event.delete()
 

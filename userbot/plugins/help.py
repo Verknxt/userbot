@@ -9,17 +9,17 @@ from userbot.utils import admin_cmd
 @command(outgoing=True, pattern="^.help$")
 async def helpcmd(help):
      if not help.text[0].isalpha() and help.text[0] not in ("/", "#", "@", "!"):
-        await help.edit("⚒ (`15`) plugins available\n"
+        await help.edit("⚒ (`16`) plugins available\n"
                      " \n"
                      "    🎨 fun (`1`) :   `spam`\n"
                      " \n"
-                     "    ⚙️ misc (`5`) :   `aria`   `gdrive`   `purge`   `zombies`   `afk`   `leave`\n"
+                     "    ⚙️ misc (`5`) :   `aria`   `gdrive`   `purge`   `zombies`   `leave`\n"
                      " \n"
                      "    💎 plugins (`1`) :   `help`\n"
                      " \n"
                      "    🧰 tools (`4`) :   `alive`   `ping`   `power_tools`   `exec`\n"
                      " \n"
-                     "    🗂 utils (`4`) :   `speedtest`   `translate`    `deezer`    `spotify`\n"
+                     "    🗂 utils (`4`) :   `speedtest`   `translate`   `deezer`    `spotify`\n"
                      " \n"
                      "📕 usage:  `.help [plugin_name]`")
 
