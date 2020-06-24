@@ -28,7 +28,7 @@ async def cmd_list(event):
             else:
                 await event.edit(input_str + " is not a valid plugin!")
         else:
-            help_string = "ㅤ"
+            help_string = "THIS IS A TEST 1 2 3 DOPE TEST BOT USER TEST INLINE"
             results = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername,
                 help_string
