@@ -17,8 +17,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
-                "© Userbot Help",
-                text="{}\nCurrently Loaded Plugins: {}".format(
+                text="{}\ncurrently loaded plugins: `{}`".format(
                     query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False
@@ -73,8 +72,6 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             reply_pop_up_alert = "{} is useless".format(plugin_name)
         else:
             reply_pop_up_alert = help_string
-        reply_pop_up_alert += "\n Use .unload {} to remove this plugin\n\
-            © Userbot".format(plugin_name)
         try:
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         except: 
