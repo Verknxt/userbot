@@ -38,7 +38,7 @@ async def capture(url):
     )
     driver.set_window_size(width + 500, height + 500)
     wait_for = height / 1000
-    await url.edit(f"waiting `{int(wait_for)}`seconds for the website to load...")
+    await url.edit(f"waiting `{int(wait_for)}` seconds for the website to load...")
     await sleep(int(wait_for))
     im_png = driver.get_screenshot_as_png()
     # saves screenshot of entire page
@@ -51,6 +51,5 @@ async def capture(url):
         await url.edit("uploading the screenshot as file...")
         await url.client.send_file(url.chat_id,
                                    out_file,
-                                   caption=input_str,
                                    force_document=True,
                                    reply_to=message_id)
