@@ -9,7 +9,7 @@ from userbot.events import register
 from userbot import GOOGLE_CHROME_BIN, CHROME_DRIVER
 
 
-@register(outgoing=True, pattern="^.s3s(?: |$)(.*)")
+@register(outgoing=True, pattern="^.ss(?: |$)(.*)")
 async def capture(url):
     """ For .ss command, capture a website's screenshot and send the photo. """
     await url.edit("processing...")
