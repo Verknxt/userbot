@@ -10,8 +10,7 @@ from userbot import GOOGLE_CHROME_BIN, CHROME_DRIVER
 
 
 @register(outgoing=True, pattern="^.ss(?: |$)(.*)")
-async def capture(url):
-    """ For .ss command, capture a website's screenshot and send the photo. """
+async def shot(url):
     await url.edit("processing...")
     chrome_options = Options()
     chrome_options.add_argument("--headless")
