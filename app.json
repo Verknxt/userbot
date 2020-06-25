@@ -44,11 +44,6 @@
       "value": "",
       "required": true
     },
-    "CHROME_DRIVER": {
-      "description": "don't touch this.",
-      "value": "/usr/bin/chromedriver",
-      "required": false
-    },
     "GOOGLE_CHROME_BIN": {
       "description": "don't touch this.",
       "value": "/usr/bin/chromium-browser",
