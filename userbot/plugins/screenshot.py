@@ -20,7 +20,7 @@ async def shot(url):
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument('--disable-gpu')
-    driver = driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver = webdriver.Chrome(ChromeDriverManager().install())
     input_str = url.pattern_match.group(1)
     link_match = match(r'\bhttps?://.*\.\S+', input_str)
     if link_match:
