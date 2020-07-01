@@ -9,12 +9,9 @@ from userbot.utils import admin_cmd
 async def _(event):
     if event.fwd_from:
         return
-    # await asyncio.sleep(2)
     await event.edit("restarting run `.ping` to check if i am online")
     await borg.disconnect()
-    # https://archive.is/im3rt
     os.execl(sys.executable, sys.executable, *sys.argv)
-    # You probably don't need it but whatever
     quit()
 
 

@@ -8,7 +8,6 @@ async def _(event):
     if event.fwd_from:
         return
     if "trim" in event.raw_text:
-        # https://t.me/c/1220993104/192075
         return
     input_str = event.pattern_match.group(1)
     if event.reply_to_msg_id:
@@ -26,8 +25,6 @@ async def _(event):
     try:
         translated = translator.translate(text, dest=lan)
         after_tr_text = translated.text
-        # TODO: emojify the :
-        # either here, or before translation
         output_str = """translated from `{}` to `{}`\n
 `{}`""".format(
             translated.src,

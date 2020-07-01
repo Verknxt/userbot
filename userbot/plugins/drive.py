@@ -5,7 +5,6 @@ import math
 from datetime import datetime
 from telethon import events
 from uniborg.util import admin_cmd, progress
-#
 from googleapiclient.discovery import build
 from apiclient.http import MediaFileUpload
 from apiclient.errors import ResumableUploadError
@@ -59,9 +58,7 @@ async def _(event):
         else:
             await mone.edit("file not found in local server give me a file path")
             return False
-    # logger.info(required_file_name)
     if required_file_name:
-        # Check if token file exists, if not create it by requesting authorization code
         try:
             with open(G_DRIVE_TOKEN_FILE) as f:
                 pass
@@ -71,11 +68,8 @@ async def _(event):
             f = open(G_DRIVE_TOKEN_FILE, "r")
             token_file_data = f.read()
             await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "please add var `AUTH_TOKEN_DATA` with the following value:\n\n`" + token_file_data + "`")
-        # Authorize, get file parameters, upload file and print out result URL for download
         http = authorize(G_DRIVE_TOKEN_FILE, None)
         file_name, mime_type = file_ops(required_file_name)
-        # required_file_name will have the full path
-        # Sometimes API fails to retrieve starting URI, we wrap it.
         try:
             g_drive_link = await upload_file(http, required_file_name, file_name, mime_type,mone,parent_id)
             await mone.edit("uploaded successfully\n\n📄 [{}]({})".format(file_name,g_drive_link))
@@ -100,7 +94,6 @@ async def sch(event):
         f = open(G_DRIVE_TOKEN_FILE, "r")
         token_file_data = f.read()
         await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "please add var `AUTH_TOKEN_DATA` with the following value:\n\n`" + token_file_data + "`")
-        # Authorize, get file parameters, upload file and print out result URL for download
     http = authorize(G_DRIVE_TOKEN_FILE, None)    
     input_str = event.pattern_match.group(1).strip()
     await event.edit("searching for `{}` in gdrive.".format(input_str))
@@ -108,7 +101,7 @@ async def sch(event):
         query = "'{}' in parents and (title contains '{}')".format(parent_id, input_str)
     else:
         query = "title contains '{}'".format(input_str)
-    query = "'{}' in parents and (title contains '{}')".format(parent_id,input_str)#search_query(parent_id,input_str)
+    query = "'{}' in parents and (title contains '{}')".format(parent_id,input_str)
     msg = await gsearch(http,query,input_str)
     await event.edit(str(msg))
 
@@ -125,7 +118,6 @@ async def gsearch(http,query,filename):
         for file in response.get('items',[]):
             if file.get('mimeType') == "application/vnd.google-apps.folder":
                 msg +="`[{}](https://drive.google.com/drive/folders/{}) (folder)`".format(file.get('title'),file.get('id'))+"\n"
-            # Process change
             else:
                 msg += "`[{}](https://drive.google.com/uc?id={}&export=download)`".format(file.get('title'),file.get('id'))+"\n"
         page_token = response.get('nextPageToken', None)
@@ -146,12 +138,9 @@ async def _(event):
         return
     input_str = event.pattern_match.group(1)
     if os.path.isdir(input_str):
-        # TODO: remove redundant code
-        #
         if Var.AUTH_TOKEN_DATA is not None:
             with open(G_DRIVE_TOKEN_FILE, "w") as t_file:
                 t_file.write(Var.AUTH_TOKEN_DATA)
-        # Check if token file exists, if not create it by requesting authorization code
         storage = None
         if not os.path.isfile(G_DRIVE_TOKEN_FILE):
             storage = await create_token_file(G_DRIVE_TOKEN_FILE, event)
@@ -159,8 +148,6 @@ async def _(event):
         f = open(G_DRIVE_TOKEN_FILE, "r")
         token_file_data = f.read()
         await event.client.send_message(int(Var.PRIVATE_GROUP_ID), "please add var `AUTH_TOKEN_DATA` with the following value:\n\n`" + token_file_data + "`")
-        # Authorize, get file parameters, upload file and print out result URL for download
-        # first, create a sub-directory
         await event.edit("uploading `{}` to gdrive...".format(input_str))
         dir_id = await create_directory(http, os.path.basename(os.path.abspath(input_str)), parent_id)
         await DoTeskWithDir(http, input_str, event, dir_id)
@@ -202,14 +189,11 @@ async def DoTeskWithDir(http, input_directory, event, parent_id):
             r_p_id = await DoTeskWithDir(http, current_file_name, event, current_dir_id)
         else:
             file_name, mime_type = file_ops(current_file_name)
-            # current_file_name will have the full path
             g_drive_link = await upload_file(http, current_file_name, file_name, mime_type, event, parent_id)
             r_p_id = parent_id
-    # TODO: there is a #bug here :(
     return r_p_id
 
 
-# Get mime type and name of given file
 def file_ops(file_path):
     mime_type = guess_type(file_path)[0]
     mime_type = mime_type if mime_type else "text/plain"
@@ -218,7 +202,6 @@ def file_ops(file_path):
 
 
 async def create_token_file(token_file, event):
-    # Run through the OAuth flow and retrieve credentials
     flow = OAuth2WebServerFlow(
         CLIENT_ID,
         CLIENT_SECRET,
@@ -241,11 +224,9 @@ async def create_token_file(token_file, event):
 
 
 def authorize(token_file, storage):
-    # Get credentials
     if storage is None:
         storage = Storage(token_file)
     credentials = storage.get()
-    # Create an httplib2.Http object and authorize it with our credentials
     http = httplib2.Http()
     credentials.refresh(http)
     http = credentials.authorize(http)
@@ -253,9 +234,7 @@ def authorize(token_file, storage):
 
 
 async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
-    # Create Google Drive service instance
     drive_service = build("drive", "v2", http=http, cache_discovery=False)
-    # File body description
     media_body = MediaFileUpload(file_path, mimetype=mime_type, resumable=True)
     body = {
         "title": file_name,
@@ -264,20 +243,17 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
     }
     if parent_id is not None:
         body["parents"] = [{"id": parent_id}]
-    # Permissions body description: anyone who has link can upload
-    # Other permissions can be found at https://developers.google.com/drive/v2/reference/permissions
     permissions = {
         "role": "reader",
         "type": "anyone",
         "value": None,
         "withLink": True
     }
-    # Insert a file
     file = drive_service.files().insert(body=body, media_body=media_body)
     response = None
     display_message = ""
     while response is None:
-        status, response = file.next_chunk()  #Credits: https://github.com/AvinashReddy3108/PaperplaneExtended/commit/df65da55d16a6563aa9023cac2bedf43248379f5
+        status, response = file.next_chunk()
         await asyncio.sleep(1)
         if status:
             percentage = int(status.progress() * 100)
@@ -291,9 +267,7 @@ async def upload_file(http, file_path, file_name, mime_type, event, parent_id):
                     logger.info(str(e))
                     pass
     file_id = response.get("id")
-    # Insert new permissions
     drive_service.permissions().insert(fileId=file_id, body=permissions).execute()
-    # Define file instance and get url for download
     file = drive_service.files().get(fileId=file_id).execute()
     download_url = file.get("webContentLink")
     return download_url

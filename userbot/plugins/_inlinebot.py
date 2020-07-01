@@ -33,7 +33,6 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(
                 current_page_number + 1, CMD_LIST, "helpme")
-            # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
             reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
@@ -52,7 +51,6 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 CMD_LIST,  # pylint:disable=E0602
                 "helpme"
             )
-            # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
             reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"

@@ -5,7 +5,6 @@ import io
 import asyncio
 import datetime
 import time
-#from userbot.utils import admin_cmd
 from userbot.events import register 
 from userbot import bot, CMD_HELP
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -45,7 +44,6 @@ async def SpotifyLoader(Spotifylod):
               msg = await conv.send_message(d_link)
               otherthings = await conv.get_response()
               song = await conv.get_response()
-              """ - don't spam notif - """
               await bot.send_read_acknowledge(conv.chat_id)
           except YouBlockedUserError:
               await Spotifylod.edit("please unblock @deezloadbot and try again")

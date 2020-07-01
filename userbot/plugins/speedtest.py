@@ -8,7 +8,6 @@ from userbot.events import register
 
 @register(outgoing=True, pattern="^.speedtest$")
 async def speedtest(spd):
-    """ For .speedtest command, use SpeedTest to check server speeds. """
     await spd.edit("running speedtest...")
     test = Speedtest()
 
@@ -25,9 +24,6 @@ async def speedtest(spd):
 
 
 def speed_convert(size):
-    """
-    Hi human, you can't read bytes?
-    """
     power = 2**10
     zero = 0
     units = {0: '``', 1: '`kb/s`', 2: '`mb/s`', 3: '`gb/s`', 4: '`tb/s`'}
