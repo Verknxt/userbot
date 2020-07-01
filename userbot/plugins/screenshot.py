@@ -9,7 +9,7 @@ from userbot.events import register
 from userbot import GOOGLE_CHROME_BIN, CHROME_DRIVER
 
 
-@register(outgoing=True, pattern="^.ss(?: |$)(.*)")
+@register(outgoing=True, pattern="^.screenshot(?: |$)(.*)")
 async def shot(url):
     await url.edit("processing...")
     chrome_options = Options()

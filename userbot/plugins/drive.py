@@ -25,7 +25,7 @@ parent_id = Var.GDRIVE_FOLDER_ID
 G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
 
-@command(pattern="^.gdrive ?(.*)")
+@command(pattern="^.drive ?(.*)")
 async def _(event):
     if event.fwd_from:
         return
