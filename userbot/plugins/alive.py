@@ -14,4 +14,4 @@ async def amireallyalive(alive):
     userbot_python_version_url = userbot_python_version.replace(".", "")
     await alive.edit("i'm alive!\n\n"
                                 f"telethon version: [{version.__version__}](https://pypi.org/project/Telethon/{version.__version__}/)"
-                                f"\npython version: [{python_version()}](https://www.python.org/downloads/release/python-{userbot_python_version_url}/)".format(userbot_python_version_url))
+                                f"\npython version: [{python_version()}](https://www.python.org/downloads/release/python-{userbot_python_version_url}/)")
