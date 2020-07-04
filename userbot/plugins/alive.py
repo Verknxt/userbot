@@ -11,12 +11,12 @@ from platform import python_version, uname
 @command(outgoing=True, pattern="^.alive$")
 async def amireallyalive(alive):
     me = await bot.get_me()
-username = me.username
-firstname = me.first_name
-lastname = me.last_name
-id = me.id
-if lastname is None:
-    lastname = ""
+    username = me.username
+    firstname = me.first_name
+    lastname = me.last_name
+    if lastname is None:
+        lastname = ""
+    id = me.id
     userbot_python_version = platform.python_version()
     userbot_python_version_url = userbot_python_version.replace(".", "")
     await alive.edit("i'm alive!\n\n"
