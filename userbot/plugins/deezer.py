@@ -21,7 +21,7 @@ except:
 os.system("rm -rf *.mp3")
 
 
-def bruh(name):
+def deezername(name):
     
     os.system("instantmusic -q -s "+name)
 

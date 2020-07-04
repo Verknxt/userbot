@@ -21,7 +21,7 @@ except:
 os.system("rm -rf *.mp3")
 
 
-def bruh(name):
+def spotifyname(name):
     
     os.system("instantmusic -q -s "+name)
 
@@ -30,8 +30,8 @@ def bruh(name):
 async def SpotifyLoader(Spotifylod):
     if Spotifylod.fwd_from:
         return
-    d_link = Spotifylod.pattern_match.group(1)
-    if ".com" not in d_link:
+    s_link = Spotifylod.pattern_match.group(1)
+    if ".com" not in s_link:
         await Spotifylod.edit("i need a link to download the song!")
     else:
         await Spotifylod.edit("the song is downloading please wait...")
