@@ -2,7 +2,7 @@ from telethon import events
 from datetime import datetime
 
 
-@command(pattern="^.ping")
+@command(pattern="^.id")
 async def _(event):
     if event.fwd_from:
         return
