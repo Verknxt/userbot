@@ -14,4 +14,4 @@ async def _(event):
     if event.fwd_from:
         return
     id = event.chat_id
-    await event.edit("{id}")
+    await event.edit("`{id}`")
