@@ -10,6 +10,6 @@ from platform import python_version, uname
 
 
 @command(outgoing=True, pattern="^.id$")
-async def chatid(id):
+async def chatid(id, event):
     chat_id = event.chat_id
     await id.edit(f"{chat_id}")
