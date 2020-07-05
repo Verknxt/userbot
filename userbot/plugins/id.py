@@ -9,9 +9,7 @@ from telethon import version
 from platform import python_version, uname
 
 
-@command(pattern="^.id")
-async def _(event):
-    if event.fwd_from:
-        return
-        chat_id = event.chat_id
-    await event.edit(f"`{chat_id}`")
+@command(outgoing=True, pattern="^.id$")
+async def chatid(id):
+    chat_id = event.chat_id
+    await id.edit(f"{chat_id}")
