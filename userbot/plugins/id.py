@@ -13,5 +13,5 @@ from platform import python_version, uname
 async def _(event):
     if event.fwd_from:
         return
-        id = event.chat_id
-    await event.edit(f"`{id}`")
+        chat_id = event.chat_id
+    await event.edit(f"`{chat_id}`")
