@@ -51,7 +51,6 @@ def command(**args):
 
         if allow_sudo:
             args["from_users"] = list(Var.SUDO_USERS)
-            # Mutually exclusive with outgoing (can only set one of either).
             args["incoming"] = True
         del allow_sudo
         try:
@@ -103,14 +102,11 @@ def load_module(shortname):
         mod.Var = Var
         mod.command = command
         mod.logger = logging.getLogger(shortname)
-        # support for uniborg
         sys.modules["uniborg.util"] = userbot.utils
         mod.Config = Config
         mod.borg = bot
-        # support for paperplaneextended
         sys.modules["userbot.events"] = userbot.utils
         spec.loader.exec_module(mod)
-        # for imports
         sys.modules["userbot.plugins."+shortname] = mod
         print("successfully (re)imported "+shortname)
 
@@ -140,10 +136,8 @@ def admin_cmd(pattern=None, **args):
     file_test = file_test.stem.replace(".py", "")
     allow_sudo = args.get("allow_sudo", False)
 
-    # get the pattern from the decorator
     if pattern is not None:
         if pattern.startswith("\#"):
-            # special fix for snip.py
             args["pattern"] = re.compile(pattern)
         else:
             args["pattern"] = re.compile("\." + pattern)
@@ -154,30 +148,23 @@ def admin_cmd(pattern=None, **args):
                 CMD_LIST.update({file_test: [cmd]})
 
     args["outgoing"] = True
-    # should this command be available for other users?
     if allow_sudo:
         args["from_users"] = list(Var.SUDO_USERS)
-        # Mutually exclusive with outgoing (can only set one of either).
         args["incoming"] = True
         del args["allow_sudo"]
 
-    # error handling condition check
     elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
 
-    # add blacklist chats, UB should not respond in these chats
     allow_edited_updates = False
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
         allow_edited_updates = args["allow_edited_updates"]
         del args["allow_edited_updates"]
 
-    # check if the plugin should listen for outgoing 'messages'
     is_message_enabled = True
 
     return events.NewMessage(**args)
 
-""" Userbot module for managing events.
- One of the main components of the userbot. """
 
 from telethon import events
 import asyncio
@@ -192,7 +179,6 @@ import datetime
 
 
 def register(**args):
-    """ Register a new event. """
     args["func"] = lambda e: e.via_bot_id is None
 
     stack = inspect.stack()
@@ -247,8 +233,6 @@ def errors_handler(func):
     return wrapper
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
-    """Generic progress_callback for both
-    upload.py and download.py"""
     now = time.time()
     diff = now - start
     if round(diff % 10.00) == 0 or current == total:
@@ -275,15 +259,11 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
 
 
 def humanbytes(size):
-    """Input size in bytes,
-    outputs in a human readable format"""
-    # https://stackoverflow.com/a/49361727/4723940
     if not size:
         return ""
-    # 2 ** 10 = 1024
     power = 2**10
     raised_to_pow = 0
-    dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
+    dict_power_n = {0: "", 1: "ki", 2: "mi", 3: "gi", 4: "ti"}
     while size > power:
         size /= power
         raised_to_pow += 1
@@ -291,8 +271,6 @@ def humanbytes(size):
 
 
 def time_formatter(milliseconds: int) -> str:
-    """Inputs time in milliseconds, to get beautified time,
-    as string"""
     seconds, milliseconds = divmod(int(milliseconds), 1000)
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)

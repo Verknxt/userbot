@@ -26,7 +26,6 @@ else:
     bot.tgbot = None
     if Var.TG_BOT_USER_NAME_BF_HER is not None:
         print("initiating inline bot")
-        # ForTheGreatrerGood of beautification
         bot.tgbot = TelegramClient(
             "TG_BOT_TOKEN",
             api_id=Var.APP_ID,
