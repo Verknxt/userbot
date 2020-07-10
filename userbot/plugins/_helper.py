@@ -1,4 +1,5 @@
 from userbot import CMD_LIST
+from userbot.utils import admin_cmd
 
 @borg.on(admin_cmd("help ?(.*)"))
 async def cmd_list(event):
