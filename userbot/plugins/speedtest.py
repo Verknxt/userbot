@@ -4,9 +4,9 @@ from speedtest import Speedtest
 from telethon import functions
 from userbot import CMD_HELP
 from userbot.events import register
+from userbot.utils import admin_cmd
 
-
-@register(outgoing=True, pattern="^.speedtest$")
+@borg.on(admin_cmd("speedtest$"))
 async def speedtest(spd):
     await spd.edit("running speedtest...")
     test = Speedtest()

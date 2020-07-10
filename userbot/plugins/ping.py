@@ -1,8 +1,8 @@
 from telethon import events
 from datetime import datetime
+from userbot.utils import admin_cmd
 
-
-@command(pattern="^.ping")
+@borg.on(admin_cmd("ping"))
 async def _(event):
     if event.fwd_from:
         return

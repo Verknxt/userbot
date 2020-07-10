@@ -7,6 +7,7 @@ import datetime
 import time
 from userbot.events import register 
 from userbot import bot, CMD_HELP
+from userbot.utils import admin_cmd
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.account import UpdateNotifySettingsRequest
 import glob
@@ -26,7 +27,7 @@ def spotifyname(name):
     os.system("instantmusic -q -s "+name)
 
 
-@register(outgoing=True, pattern="^.spotify(?: |$)(.*)")
+@borg.on(admin_cmd("spotify(?: |$)(.*)"))
 async def SpotifyLoader(Spotifylod):
     if Spotifylod.fwd_from:
         return

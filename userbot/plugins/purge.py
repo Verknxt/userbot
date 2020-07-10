@@ -3,10 +3,9 @@ from asyncio import sleep
 from telethon.errors import rpcbaseerrors
 
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
-from userbot.utils import register, errors_handler
+from userbot.utils import register, errors_handler, admin_cmd
 
-
-@register(outgoing=True, pattern="^.purge$")
+@borg.on(admin_cmd("purge$"))
 @errors_handler
 async def fastpurger(purg):
     chat = await purg.get_input_chat()
@@ -36,8 +35,7 @@ async def fastpurger(purg):
     await sleep(2)
     await done.delete()
 
-
-@register(outgoing=True, pattern="^.purgeme")
+@borg.on(admin_cmd("purgeme"))
 @errors_handler
 async def purgeme(delme):
     message = delme.text
@@ -63,8 +61,7 @@ async def purgeme(delme):
     i = 1
     await smsg.delete()
 
-
-@register(outgoing=True, pattern="^.del$")
+@borg.on(admin_cmd("del$"))
 @errors_handler
 async def delete_it(delme):
     msg_src = await delme.get_reply_message()
@@ -80,8 +77,7 @@ async def delete_it(delme):
                 await delme.client.send_message(
                     BOTLOG_CHATID, "well i can't delete a message")
 
-
-@register(outgoing=True, pattern="^.edit")
+@borg.on(admin_cmd("edit"))
 @errors_handler
 async def editer(edit):
     message = edit.text
@@ -99,8 +95,7 @@ async def editer(edit):
         await edit.client.send_message(BOTLOG_CHATID,
                                        "edit query was executed successfully")
 
-
-@register(outgoing=True, pattern="^.sd")
+@borg.on(admin_cmd("sd"))
 @errors_handler
 async def selfdestruct(destroy):
     message = destroy.text

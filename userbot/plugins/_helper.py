@@ -1,6 +1,6 @@
 from userbot import CMD_LIST
 
-@command(pattern="^.help ?(.*)")
+@borg.on(admin_cmd("help ?(.*)"))
 async def cmd_list(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         tgbotusername = Var.TG_BOT_USER_NAME_BF_HER

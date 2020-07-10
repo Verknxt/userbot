@@ -5,6 +5,7 @@ import math
 from datetime import datetime
 from telethon import events
 from uniborg.util import admin_cmd, progress
+from userbot.utils import admin_cmd
 from googleapiclient.discovery import build
 from apiclient.http import MediaFileUpload
 from apiclient.errors import ResumableUploadError
@@ -23,8 +24,7 @@ REDIRECT_URI = "urn:ietf:wg:oauth:2.0:oob"
 parent_id = Var.GDRIVE_FOLDER_ID
 G_DRIVE_DIR_MIME_TYPE = "application/vnd.google-apps.folder"
 
-
-@command(pattern="^.drive ?(.*)")
+@borg.on(admin_cmd("drive ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return

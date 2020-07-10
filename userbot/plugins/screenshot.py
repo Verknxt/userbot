@@ -6,10 +6,10 @@ from asyncio import sleep
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from userbot.events import register
+from userbot.utils import admin_cmd
 from userbot import GOOGLE_CHROME_BIN, CHROME_DRIVER
 
-
-@register(outgoing=True, pattern="^.screenshot(?: |$)(.*)")
+@borg.on(admin_cmd("screenshot(?: |$)(.*)"))
 async def shot(url):
     await url.edit("processing...")
     chrome_options = Options()
@@ -46,7 +46,7 @@ async def shot(url):
     if url.reply_to_msg_id:
         message_id = url.reply_to_msg_id
     with io.BytesIO(im_png) as out_file:
-        out_file.name = "screencapture.png"
+        out_file.name = "screenshot.png"
         await url.edit("uploading the screenshot as file...")
         await url.delete()
         await url.client.send_file(url.chat_id,

@@ -8,7 +8,7 @@ from userbot.utils import admin_cmd
 from telethon import version
 from platform import python_version, uname
 
-@command(outgoing=True, pattern="^.alive$")
+@borg.on(admin_cmd("alive$"))
 async def amireallyalive(alive):
     me = await bot.get_me()
     username = me.username

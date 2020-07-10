@@ -5,7 +5,7 @@ from asyncio import sleep
 from subprocess import PIPE, Popen
 from userbot import LOGS, CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
 from userbot.events import register
-from userbot.utils import humanbytes
+from userbot.utils import humanbytes, admin_cmd
 from requests import get
 
 
@@ -51,7 +51,7 @@ aria2 = aria2p.API(aria2p.Client(host="http://localhost", port=6800,
 aria2.set_global_options({'dir': download_path})
 
 
-@register(outgoing=True, pattern="^.amag(?: |$)(.*)")
+@borg.on(admin_cmd("amag(?: |$)(.*)"))
 async def magnet_download(event):
     magnet_uri = event.pattern_match.group(1)
     try:
@@ -66,7 +66,7 @@ async def magnet_download(event):
     await check_progress_for_dl(gid=new_gid, event=event, previous=None)
 
 
-@register(outgoing=True, pattern="^.aurl(?: |$)(.*)")
+@borg.on(admin_cmd("aurl(?: |$)(.*)"))
 async def aurl_download(event):
     uri = [event.pattern_match.group(1)]
     try: 
@@ -81,8 +81,7 @@ async def aurl_download(event):
         new_gid = await check_metadata(gid)
         await check_progress_for_dl(gid=new_gid, event=event, previous=None)
 
-
-@register(outgoing=True, pattern="^.aclear(?: |$)(.*)")
+@borg.on(admin_cmd("aclear(?: |$)(.*)"))
 async def remove_all(event):
     try:
         removed = aria2.remove_all(force=True)
@@ -97,7 +96,7 @@ async def remove_all(event):
     await sleep(2.5)
 
 
-@register(outgoing=True, pattern="^.apause(?: |$)(.*)")
+@borg.on(admin_cmd("apause(?: |$)(.*)"))
 async def pause_all(event):
     await event.edit("pausing on going downloads...")
     aria2.pause_all(force=True)
@@ -105,8 +104,7 @@ async def pause_all(event):
     await event.edit("successfully paused on going downloads.")
     await sleep(2.5)
 
-
-@register(outgoing=True, pattern="^.aresume(?: |$)(.*)")
+@borg.on(admin_cmd("aresume(?: |$)(.*)"))
 async def resume_all(event):
     await event.edit("resuming downloads...")
     aria2.resume_all()
