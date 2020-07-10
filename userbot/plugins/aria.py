@@ -57,8 +57,8 @@ async def magnet_download(event):
     try:
         download = aria2.add_magnet(magnet_uri)
     except Exception as e:
-        LOGS.info(str(e))
-        return await event.edit("error:\n`" + str(e) + "`")
+        LOGS.info(str.lower(e))
+        return await event.edit("`" + str.lower(e) + "`")
     gid = download.gid
     await check_progress_for_dl(gid=gid, event=event, previous=None)
     await sleep(10)
@@ -72,8 +72,8 @@ async def aurl_download(event):
     try: 
         download = aria2.add_uris(uri, options=None, position=None)
     except Exception as e:
-        LOGS.info(str(e))
-        return await event.edit("error:\n`{}`".format(str(e)))
+        LOGS.info(str.lower(e))
+        return await event.edit("`{}`".format(str.lower(e)))
     gid = download.gid
     await check_progress_for_dl(gid=gid, event=event, previous=None)
     file = aria2.get_download(gid)
