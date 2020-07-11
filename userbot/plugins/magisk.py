@@ -1,9 +1,8 @@
 import re
 from requests import get
 from bs4 import BeautifulSoup
-
 from userbot import CMD_HELP
-from userbot.utils import register
+from userbot.utils import register, admin_cmd
 
 
 @borg.on(admin_cmd("magisk$"))
