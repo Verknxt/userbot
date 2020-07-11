@@ -1,6 +1,5 @@
 import asyncio
 from telethon import events
-from userbot import StartTime
 from platform import uname
 from userbot import CMD_HELP, ALIVE_NAME
 from userbot.utils import admin_cmd
