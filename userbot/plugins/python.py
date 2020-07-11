@@ -33,17 +33,17 @@ async def _(event):
     sys.stdout = old_stdout
     sys.stderr = old_stderr
 
-    evaluation = ""
+    python = ""
     if exc:
-        evaluation = exc
+        python = exc
     elif stderr:
-        evaluation = stderr
+        python = stderr
     elif stdout:
-        evaluation = stdout
+        python = stdout
     else:
-        evaluation = "success"
+        python = "success"
 
-    final_output = "eval: \n`{}` \n\noutput: \n`{}`".format(cmd, evaluation)
+    final_output = "python: \n`{}` \n\noutput: \n`{}`".format(cmd, python)
 
     if len(final_output) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(final_output)) as out_file:
