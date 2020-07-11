@@ -6,7 +6,7 @@ from userbot.utils import admin_cmd
 from telethon import version
 from platform import python_version, uname
 
-USERBOT_IMG = "https://srv-file20.gofile.io/download/lDPX8X/logo_photos_v2_x4.png"
+USERBOT_IMG = "https://telegra.ph/file/d88964c031e2cff68bcb3.png"
 
 @borg.on(admin_cmd("alive$"))
 async def amireallyalive(alive):
