@@ -62,7 +62,6 @@ if bool(ENV):
 
     CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
 
-    # SQL Database URI
     DB_URI = os.environ.get("DATABASE_URL", None)
 
     OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
