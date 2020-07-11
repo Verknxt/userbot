@@ -29,7 +29,7 @@ async def amireallyalive(alive):
          userbot_caption += f"full name: [{firstname} {lastname}](tg://user?id={id})"   
          userbot_caption += f"\ntelethon version: [{version.__version__}](https://pypi.org/project/Telethon/{version.__version__}/)"
          userbot_caption += f"\npython version: [{python_version()}](https://www.python.org/downloads/release/python-{userbot_python_version_url}/)"
-         await borg.send_file(alive.chat_id, USERBOT_IMG, caption=cat_caption, reply_to=reply_to_id)
+         await borg.send_file(alive.chat_id, USERBOT_IMG, caption=userbot_caption, reply_to=reply_to_id)
          await alive.delete()
     else:
         await alive.edit("i'm alive!\n\n"
