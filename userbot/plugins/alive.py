@@ -1,7 +1,7 @@
 import asyncio
 from telethon import events
 from platform import uname
-from userbot import CMD_HELP, ALIVE_NAME
+from userbot import CMD_HELP
 from userbot.utils import admin_cmd
 from telethon import version
 from platform import python_version, uname
